@@ -278,7 +278,7 @@ function forest(c) {
   }
   let placed = 0, tries = 0;
   while (placed < 6 && tries < 90) { tries++; const x = rnd() * W, w = Math.max(12, W * (.03 + rnd() * .03)); if (Math.abs(x - C[0]) < R * 1.25 + w) continue; near += `<path d="${trunk(x, w, (rnd() - .5) * w * 1.1, -10, H + 10)}"/>`; placed++; }
-  for (let i = 0; i < 26; i++) { const x = rnd() * W, y = -M * .05 + rnd() * H * .12, r = M * (.06 + rnd() * .09); canopy += `<circle cx="${f1(x)}" cy="${f1(y)}" r="${f1(r)}"/>`; }
+  for (let i = 0; i < 26; i++) { const x = rnd() * W, y = -M * .16 + rnd() * H * .1, r = M * (.07 + rnd() * .1); canopy += `<circle cx="${f1(x)}" cy="${f1(y)}" r="${f1(r)}"/>`; }
   for (let i = 0; i < 16; i++) {
     const x = rnd() * W, y = H - rnd() * H * .05, L = M * (.05 + rnd() * .06);
     for (let j = -3; j <= 3; j++) { const a = -Math.PI / 2 + j * .32 + (rnd() - .5) * .1; ferns += `<path d="M${f1(x)} ${f1(y)}Q${f1(x + Math.cos(a) * L * .6)} ${f1(y + Math.sin(a) * L * .9)} ${f1(x + Math.cos(a) * L * 1.1)} ${f1(y + Math.sin(a) * L * .7)}"/>`; }
@@ -521,7 +521,7 @@ function bazaar(c) {
     if (k < NB - 1) {
       const nb = bays[k + 1], ox = lerp(b.cx, nb.cx, .5), oy = lerp(b.base - b.h * 1.02, nb.base - nb.h * 1.02, .5), ow2 = b.w * .045;
       const fx0 = ox + (rtl ? 1 : -1) * b.w * .22, fy = lerp(b.base, nb.base, .5) - 2, fw2 = b.w * .16;
-      vaults += `<ellipse cx="${f1(ox)}" cy="${f1(oy)}" rx="${f1(ow2)}" ry="${f1(ow2 * .35)}" fill="#ffe7b0" opacity="${(.28 + .3 * (1 - depth)).toFixed(2)}"/>`;
+      vaults += `<ellipse cx="${f1(ox)}" cy="${f1(oy)}" rx="${f1(ow2)}" ry="${f1(ow2 * .35)}" fill="none" stroke="#ffe7b0" stroke-width="${f2(.5 + b.s)}" opacity="${(.18 + .22 * (1 - depth)).toFixed(2)}"/>`;
       shafts += `<path d="M${f1(ox - ow2)} ${f1(oy)}L${f1(ox + ow2)} ${f1(oy)}L${f1(fx0 + fw2)} ${f1(fy)}L${f1(fx0 - fw2)} ${f1(fy)}Z" fill="url(#${P}lgShaft)" opacity=".6"/>`;
       pools += `<ellipse cx="${f1(fx0)}" cy="${f1(fy)}" rx="${f1(fw2 * 1.1)}" ry="${f1(fw2 * .16)}" fill="#ffcf7a" opacity=".22"/>`;
     }
@@ -534,7 +534,7 @@ function bazaar(c) {
   let motes = ''; for (let i = 0; i < (c.big ? 36 : 20); i++) motes += `<circle r="${f2(.6 + rnd() * 1.1)}" fill="#fff0c8" opacity="0"/>`;
   const moteD = Array.from({ length: c.big ? 36 : 20 }, () => ({ k: 1 + Math.floor(rnd() * (NB - 3)), u: rnd(), v: rnd(), sp: .02 + rnd() * .04, ph: rnd() * 6.28 }));
   const bird = `<path id="${P}bird" d="M-1 0Q-.5 -.55 0 0Q.5 -.55 1 0" fill="none" stroke="#2a160a" stroke-width=".22" stroke-linecap="round"/>`;
-  const pts = []; for (let i = 0; i <= 50; i++) { const s = lerp(1.15, .1, i / 50); pts.push([lerp(VP[0], fcx + (rtl ? 1 : -1) * fw * .05, s), lerp(VP[1], fbase, s) - M * .04 * s]); }
+  const pts = []; for (let i = 0; i <= 50; i++) { const s = lerp(.98, .1, i / 50); pts.push([lerp(VP[0], fcx + (rtl ? 1 : -1) * fw * .05, s), lerp(VP[1], fbase, s) - M * .04 * s]); }
   const tr = mkTrail(pts);
   const html = `<g class="w" id="${P}w" opacity="0">
     <defs><radialGradient id="${P}rgEnd"><stop offset="0" stop-color="#fff2c8"/><stop offset=".3" stop-color="#ffc867" stop-opacity=".85"/><stop offset="1" stop-color="#c06a20" stop-opacity="0"/></radialGradient>
@@ -570,7 +570,7 @@ function bazaar(c) {
     const ba = tt * .55, bk = bays[3], bx = bk.cx + Math.cos(ba) * bk.w * .55, by = bk.base - bk.h * (.85 + .08 * Math.sin(ba * 2)), bs = M * .018, flap = RM() ? 1 : .55 + .45 * Math.sin(tt * 16);
     setA(this.bird, 'transform', `translate(${f1(bx)} ${f1(by)}) scale(${f2(bs * (Math.sin(ba) > 0 ? 1 : -1))} ${f2(bs * flap)})`);
     setA(this.bird, 'opacity', (pl ? .9 : .5).toFixed(2));
-  }, starS(q) { return lerp(0, 1, sstep(q) * .4 + q * .6); }, starR(q) { const s = lerp(1.15, .1, this.starS(q)); return .6 + .9 * s; } };
+  }, starS(q) { return lerp(0, 1, sstep(q) * .4 + q * .6); }, starR(q) { const s = lerp(.98, .1, this.starS(q)); return .6 + .9 * s; } };
 }
 
 /* =====================================================================
