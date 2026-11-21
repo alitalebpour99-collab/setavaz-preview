@@ -1,2 +1,0 @@
-# setavaz-preview
-Design preview

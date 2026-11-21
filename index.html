@@ -6,361 +6,229 @@
 <meta name="theme-color" content="#03040b">
 <meta name="color-scheme" content="dark">
 <meta name="robots" content="noindex">
-<title>Setavaz Website</title>
+<title>Setavaz Journey</title>
+<meta name="description" content="ستاواز، آواز ستاره‌ها: ستارهٔ طلایی لوگو مسافر است و هر آهنگ یک فصل از سفر او.">
 <link rel="icon" href="assets/setavaz-mark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Markazi+Text:wght@400;600&family=Vazirmatn:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Markazi+Text:wght@400;600&family=Vazirmatn:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css?v=3">
 <script>
   (function () {
     var h = document.documentElement;
     h.classList.add('js');
     if (!window.matchMedia || !matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('anim');
+    try { var q = new URLSearchParams(location.search).get('lang'), s = localStorage.getItem('sv-lang'); var l = q || s; if (l === 'en') { h.lang = 'en'; h.dir = 'ltr'; } } catch (e) {}
   })();
 </script>
-<style>
-:root {
-  --ink: #03040b;
-  --night: #070b22;
-  --deep: #0b1233;
-  --indigo: #120E3F;
-  --gold: #F4C35A;
-  --gold-deep: #d9a441;
-  --hair: rgba(244, 195, 90, .28);
-  --hair-strong: rgba(244, 195, 90, .55);
-  --ivory: #F6ECD3;
-  --mute: rgba(246, 236, 211, .68);
-  --faint: rgba(246, 236, 211, .42);
-  --glass: rgba(7, 10, 30, .72);
-  --gut: 16px;
-  --fa: 'Vazirmatn', system-ui, sans-serif;
-  --fa-display: 'Markazi Text', 'Vazirmatn', serif;
-  --lat: 'Cormorant Garamond', 'Times New Roman', serif;
-}
-* { box-sizing: border-box; }
-html { background: var(--ink); color-scheme: dark; -webkit-text-size-adjust: 100%; }
-html.anim { scroll-behavior: smooth; }
-body {
-  margin: 0; min-height: 100%;
-  background: radial-gradient(120% 80% at 50% 0%, #0b1233 0%, #060920 45%, #03040b 100%);
-  color: var(--ivory); font-family: var(--fa); font-weight: 400; line-height: 1.8;
-  overflow-x: hidden; overflow-x: clip;
-  -webkit-font-smoothing: antialiased;
-}
-[dir="ltr"] body { font-family: var(--lat); }
-a { color: inherit; text-decoration: none; }
-button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
-.lat { font-family: var(--lat); direction: ltr; unicode-bidi: isolate; }
-.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; border-radius: 6px; }
-
-/* ---------- the sky (fixed, behind everything) ---------- */
-#mw { position: fixed; left: 50%; top: 50%; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 2.4s ease; }
-#mw.on { opacity: .92; }
-html.anim #mw.on { animation: drift 160s ease-in-out infinite alternate; }
-@keyframes drift {
-  from { transform: translate(-50%, -50%) rotate(-3deg) translate3d(-1.5%, .5%, 0); }
-  to   { transform: translate(-50%, -50%) rotate(3deg)  translate3d(1.5%, -.5%, 0); }
-}
-#mw { transform: translate(-50%, -50%); }
-#tw { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-main, footer, nav { position: relative; z-index: 1; }
-
-/* ---------- nav ---------- */
-nav.top {
-  position: fixed; inset-inline: 0; top: 0; z-index: 30;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: calc(10px + env(safe-area-inset-top)) var(--gut) 10px;
-  background: linear-gradient(180deg, rgba(3,4,11,.78), rgba(3,4,11,0));
-}
-nav.top .mark img { height: 30px; width: auto; display: block; opacity: .95; }
-nav.top .links { display: flex; align-items: center; gap: 18px; font-size: 14px; color: var(--mute); }
-nav.top .links a:hover { color: var(--ivory); }
-#lang { border: 1px solid var(--hair); border-radius: 999px; padding: 2px 12px; font-size: 13px; color: var(--gold); line-height: 1.7; }
-#lang:hover { border-color: var(--hair-strong); }
-
-/* ---------- hero ---------- */
-#hero { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 72px var(--gut) 96px; text-align: center; position: relative; }
-.art { position: relative; display: block; }
-#logoLetters { display: block; width: 100%; height: auto; user-select: none; -webkit-user-drag: none; }
-html.anim .art #logoLetters { clip-path: inset(0 0 0 100%); }
-#hg { position: absolute; pointer-events: none; overflow: visible; }
-#hg .ln path { fill: none; stroke: var(--gold); stroke-linecap: round; }
-#hg .gl path { fill: none; stroke: #ffd27a; stroke-linecap: round; }
-#hg .ring { fill: none; stroke: #ffd690; }
-#hg .nd { fill: #fff3d6; }
-html.anim #hg .ln path, html.anim #hg .gl path { stroke-dasharray: 1; stroke-dashoffset: 1; }
-#ghost { position: absolute; pointer-events: none; opacity: 0; overflow: visible; }
-#ghost path { fill: none; stroke: var(--gold); stroke-width: .045; }
-h1.title { font-family: var(--fa-display); font-weight: 600; font-size: clamp(38px, 9vw, 72px); line-height: 1.15; margin: 14px 0 0; letter-spacing: 0; color: var(--ivory); text-shadow: 0 0 28px rgba(244,195,90,.18); }
-[dir="ltr"] h1.title { font-family: var(--lat); font-weight: 500; letter-spacing: .01em; }
-.subline { margin: 6px 0 0; color: var(--mute); font-size: clamp(15px, 3.8vw, 18px); font-weight: 300; }
-#play { margin-top: 26px; display: inline-flex; flex-direction: column; align-items: center; gap: 10px; }
-#play .disc { position: relative; width: 78px; height: 78px; border-radius: 50%; border: 1px solid var(--hair-strong); display: grid; place-items: center; background: radial-gradient(circle, rgba(244,195,90,.16), rgba(244,195,90,0) 70%); box-shadow: 0 0 36px rgba(244,195,90,.18), inset 0 0 18px rgba(244,195,90,.12); transition: transform .4s ease, box-shadow .4s ease; }
-#play:hover .disc { transform: scale(1.04); box-shadow: 0 0 48px rgba(244,195,90,.3), inset 0 0 22px rgba(244,195,90,.18); }
-html.anim #play .disc::after { content: ''; position: absolute; inset: -9px; border-radius: 50%; border: 1px solid rgba(244,195,90,.22); animation: invite 3.6s ease-in-out infinite; }
-html.anim body.playing #play .disc::after { animation: none; opacity: 0; }
-@keyframes invite { 0%, 100% { transform: scale(.94); opacity: .0; } 50% { transform: scale(1.05); opacity: .9; } }
-.ico-play { width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-inline-start: 0; border-left: 19px solid var(--gold); margin-left: 5px; }
-.ico-pause { display: none; gap: 6px; }
-.ico-pause i { display: block; width: 5px; height: 22px; background: var(--gold); border-radius: 2px; }
-body.playing .ico-play { display: none; }
-body.playing .ico-pause { display: flex; }
-.loading #play .disc { animation: none; }
-.loading .ico-play { opacity: .35; }
-#play .lbl { font-size: 14px; color: var(--gold); letter-spacing: .02em; }
-.prelude { margin-top: 10px; font-size: 13px; color: var(--faint); }
-.cue { position: absolute; bottom: calc(22px + env(safe-area-inset-bottom)); left: 0; right: 0; margin: 0 auto; width: max-content; display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12px; color: var(--faint); }
-.cue i { display: block; width: 1px; height: 34px; background: linear-gradient(var(--gold), rgba(244,195,90,0)); transform-origin: top; }
-html.anim .cue i { animation: cue 2.8s ease-in-out infinite; }
-@keyframes cue { 0% { transform: scaleY(0); opacity: 1; } 60% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
-html.anim .intro { opacity: 0; }
-
-/* ---------- the traveller (the logo's star) ---------- */
-#trav { position: fixed; left: 0; top: 0; width: 80px; height: 80px; margin: -40px 0 0 -40px; z-index: 20; pointer-events: none; will-change: transform; opacity: 0; }
-#trav svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-#trav .halo { position: absolute; inset: -60%; border-radius: 50%; background: radial-gradient(circle, rgba(255,214,140,.55) 0%, rgba(244,195,90,.18) 30%, rgba(244,195,90,0) 62%); will-change: opacity; }
-
-/* ---------- journey ---------- */
-#journey { position: relative; height: 560vh; height: 560svh; }
-.stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
-#scn { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-#scn .crest { fill: none; stroke: var(--gold); stroke-width: 1; }
-#scn .trail { fill: none; stroke: #ffd98a; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-#scn .trail-g { fill: none; stroke: #f4c35a; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
-#scn .gl { fill: none; stroke: var(--gold); stroke-linecap: round; }
-html.anim #scn .rip { animation: rip 7s linear infinite; }
-@keyframes rip { to { stroke-dashoffset: -208; } }
-html.anim #scn .fog { animation: fog 26s ease-in-out infinite alternate; }
-@keyframes fog { from { transform: translateX(-4%); } to { transform: translateX(4%); } }
-.stage::after { content: ''; position: absolute; inset: auto 0 0 0; height: 46%; background: linear-gradient(0deg, rgba(3,4,11,.92) 10%, rgba(3,4,11,0)); pointer-events: none; z-index: 1; }
-.panel { position: absolute; z-index: 2; inset-inline: var(--gut); bottom: calc(92px + env(safe-area-inset-bottom)); }
-.kick { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--gold); letter-spacing: .06em; }
-.kick b { font-weight: 400; font-family: var(--lat); font-size: 14px; }
-.jmap { position: relative; display: flex; justify-content: space-between; width: 148px; margin: 10px 0 10px; }
-.jmap::before { content: ''; position: absolute; inset-inline: 4px; top: 50%; height: 1px; background: var(--hair); }
-.jmap .fill { position: absolute; inset-inline-start: 4px; top: 50%; height: 1px; width: calc(100% - 8px); background: var(--gold); transform: scaleX(0); transform-origin: right; }
-[dir="ltr"] .jmap .fill { transform-origin: left; }
-.jmap i { position: relative; width: 9px; height: 9px; transform: rotate(45deg); border: 1px solid var(--hair-strong); background: var(--ink); transition: background .5s, box-shadow .5s, border-color .5s; }
-.jmap i.on { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 10px rgba(244,195,90,.7); }
-.ch .num { font-size: 13px; color: var(--mute); }
-.ch h2 { margin: 0; font-family: var(--fa-display); font-weight: 600; font-size: clamp(36px, 10vw, 74px); line-height: 1.05; color: var(--ivory); }
-[dir="ltr"] .ch h2 { font-family: var(--lat); font-weight: 500; }
-.ch .latn { font-family: var(--lat); font-style: italic; font-size: 20px; color: var(--gold); direction: ltr; unicode-bidi: isolate; display: block; margin-top: 2px; }
-.ch p { margin: 8px 0 0; font-size: 14.5px; line-height: 1.75; color: var(--mute); max-width: 34em; font-weight: 300; }
-.ch .extra { margin-top: 6px; min-height: 1.6em; font-size: 13px; color: var(--gold); font-variant-numeric: tabular-nums; }
-.pill { display: inline-flex; align-items: center; gap: 10px; margin-top: 12px; padding: 8px 18px 8px 16px; border: 1px solid var(--hair-strong); border-radius: 999px; font-size: 14px; color: var(--ivory); background: rgba(7,10,30,.35); transition: background .3s, border-color .3s; }
-.pill:hover { background: rgba(244,195,90,.1); border-color: var(--gold); }
-.pill .tri { width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid var(--gold); }
-
-/* ---------- short sections ---------- */
-section.block { position: relative; padding: 110px var(--gut); max-width: 1080px; margin: 0 auto; }
-.sec-k { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--gold); letter-spacing: .06em; }
-.sec-k b { font-family: var(--lat); font-weight: 400; font-size: 14px; }
-.sec-k::after { content: ''; flex: 0 0 48px; height: 1px; background: var(--hair-strong); }
-section.block h3 { margin: 10px 0 0; font-family: var(--fa-display); font-weight: 600; font-size: clamp(34px, 8vw, 56px); line-height: 1.15; }
-[dir="ltr"] section.block h3 { font-family: var(--lat); font-weight: 500; }
-section.block p { color: var(--mute); font-weight: 300; font-size: 16.5px; max-width: 32em; }
-#about .grid { display: grid; gap: 36px; align-items: center; }
-#orn { width: min(72vw, 330px); aspect-ratio: 1; margin: 0 auto; position: relative; }
-#orn svg { width: 100%; height: 100%; overflow: visible; display: block; }
-#orn .al { fill: none; stroke: var(--gold); stroke-linecap: round; }
-html.anim #orn .al { stroke-dasharray: 1; stroke-dashoffset: 1; }
-#orn .hint { fill: none; stroke: var(--gold); stroke-width: .008; opacity: .4; }
-.three { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 18px; font-size: 14px; color: var(--ivory); }
-.three span { display: inline-flex; align-items: center; gap: 8px; }
-.three span::before { content: ''; width: 7px; height: 7px; transform: rotate(45deg); border: 1px solid var(--gold); }
-.listen-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
-.svc { display: inline-flex; align-items: center; gap: 12px; padding: 12px 18px; border: 1px solid var(--hair); border-radius: 14px; background: rgba(7,10,30,.42); min-width: 150px; transition: border-color .3s, background .3s; }
-.svc:hover { border-color: var(--hair-strong); background: rgba(244,195,90,.06); }
-.svc svg { width: 22px; height: 22px; flex: none; }
-.svc .n { font-family: var(--lat); font-size: 18px; line-height: 1.2; direction: ltr; unicode-bidi: isolate; }
-.svc small { display: block; font-size: 11.5px; color: var(--faint); font-family: var(--fa); }
-[dir="ltr"] .svc small { font-family: var(--lat); }
-form.news { display: flex; gap: 10px; margin-top: 22px; max-width: 520px; flex-wrap: wrap; }
-form.news input { flex: 1 1 220px; min-width: 0; height: 50px; border-radius: 999px; border: 1px solid var(--hair); background: rgba(7,10,30,.55); color: var(--ivory); padding: 0 20px; font: inherit; font-size: 15px; direction: ltr; text-align: right; }
-[dir="ltr"] form.news input { text-align: left; }
-form.news input::placeholder { color: var(--faint); }
-form.news input:focus { outline: none; border-color: var(--gold); }
-form.news button { height: 50px; padding: 0 26px; border-radius: 999px; background: var(--gold); color: #1a1205; font-weight: 600; font-size: 15px; }
-form.news button:hover { background: #ffd47a; }
-.note { font-size: 13px; color: var(--gold); min-height: 1.8em; margin-top: 10px; }
-
-footer { padding: 54px var(--gut) calc(120px + env(safe-area-inset-bottom)); border-top: 1px solid rgba(244,195,90,.14); text-align: center; color: var(--faint); font-size: 13px; }
-footer img { height: 46px; width: auto; opacity: .9; }
-footer .fl { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px; }
-footer .fl a { color: var(--mute); }
-footer .fl a:hover { color: var(--gold); }
-footer .cr { margin-top: 12px; }
-
-/* ---------- mini player ---------- */
-#player {
-  position: fixed; z-index: 40; inset-inline: 10px; bottom: calc(10px + env(safe-area-inset-bottom));
-  max-width: 760px; margin: 0 auto; height: 66px; border-radius: 20px;
-  background: var(--glass); -webkit-backdrop-filter: blur(16px) saturate(1.2); backdrop-filter: blur(16px) saturate(1.2);
-  border: 1px solid rgba(244,195,90,.24); box-shadow: 0 14px 40px rgba(0,0,0,.45);
-  display: flex; align-items: center; gap: 12px; padding: 0 10px 0 12px;
-  transform: translateY(140%); transition: transform .8s cubic-bezier(.2,.8,.2,1);
-}
-#player.on { transform: none; }
-#seal { width: 46px; height: 46px; flex: none; overflow: visible; }
-#seal .s0 { fill: none; stroke: rgba(244,195,90,.16); stroke-width: .035; }
-#seal .s1 { fill: none; stroke: var(--gold); stroke-width: .045; stroke-linecap: round; }
-#player .meta { flex: none; min-width: 0; line-height: 1.25; }
-#player .meta b { display: block; font-family: var(--lat); font-weight: 500; font-size: 19px; direction: ltr; unicode-bidi: isolate; text-align: start; }
-#player .meta small { display: block; font-size: 11.5px; color: var(--mute); font-variant-numeric: tabular-nums; }
-#frz { flex: 1; min-width: 40px; height: 30px; display: block; }
-#pp { flex: none; width: 42px; height: 42px; border-radius: 50%; background: var(--gold); display: grid; place-items: center; }
-#pp .ico-play { border-top-width: 7px; border-bottom-width: 7px; border-left: 11px solid #1a1205; margin-left: 3px; }
-#pp .ico-pause i { width: 4px; height: 14px; background: #1a1205; }
-#pp .ico-pause { gap: 4px; }
-#bar { position: absolute; inset-inline: 18px; top: -1px; height: 18px; transform: translateY(-50%); cursor: pointer; direction: ltr; }
-#bar::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(246,236,211,.14); }
-#barFill { position: absolute; left: 0; top: 50%; height: 1px; width: 0; background: linear-gradient(90deg, rgba(244,195,90,0), var(--gold)); }
-#barHead { position: absolute; top: 50%; left: 0; width: 12px; height: 12px; margin: -6px 0 0 -6px; filter: drop-shadow(0 0 4px #f4c35a); }
-
-#toast { position: fixed; z-index: 50; left: 50%; bottom: calc(92px + env(safe-area-inset-bottom)); transform: translate(-50%, 20px); width: min(92vw, 460px); padding: 12px 16px; border-radius: 14px; background: rgba(12,14,40,.94); border: 1px solid var(--hair); font-size: 13.5px; color: var(--ivory); text-align: center; opacity: 0; pointer-events: none; transition: opacity .4s, transform .4s; }
-#toast.on { opacity: 1; transform: translate(-50%, 0); }
-
-/* ---------- wider screens ---------- */
-@media (min-width: 900px) and (min-aspect-ratio: 11/10) {
-  :root { --gut: 40px; }
-  nav.top .links { gap: 28px; font-size: 15px; }
-  .stage::after { inset: 0 0 0 auto; width: 52%; height: 100%; background: linear-gradient(270deg, rgba(3,4,11,.85) 20%, rgba(3,4,11,0)); }
-  [dir="ltr"] .stage::after { inset: 0 auto 0 0; background: linear-gradient(90deg, rgba(3,4,11,.85) 20%, rgba(3,4,11,0)); }
-  .panel { inset-inline-start: 6vw; inset-inline-end: auto; bottom: auto; top: 50%; transform: translateY(-50%); width: min(420px, 34vw); }
-  .ch p { font-size: 17px; }
-  #about .grid { grid-template-columns: 1fr 1fr; gap: 64px; }
-  section.block { padding: 150px var(--gut); }
-  #player { height: 72px; gap: 18px; padding: 0 14px 0 18px; }
-  #frz { height: 34px; }
-}
-@media (max-height: 720px) { .cue { display: none; } }
-@media (max-width: 380px) {
-  nav.top .links { gap: 12px; font-size: 13px; }
-  #player .meta b { font-size: 17px; }
-}
-</style>
 </head>
 <body>
+<a class="skip" href="#main" data-en="Skip to content">رفتن به متن</a>
 <canvas id="mw" aria-hidden="true"></canvas>
 <canvas id="tw" aria-hidden="true"></canvas>
+<div class="vign" aria-hidden="true"></div>
 
-<nav class="top">
-  <a class="mark" href="#hero" aria-label="Setavaz"><img src="assets/setavaz-mark.svg" alt="ستاواز" data-en-alt="Setavaz"></a>
+<nav class="top" aria-label="اصلی">
+  <a class="mark" href="#/" aria-label="ستاواز، خانه" data-en-aria="Setavaz, home">
+    <img src="assets/setavaz-letters.svg" alt="">
+    <svg class="home-ghost" viewBox="-1.2 -1.2 2.4 2.4" aria-hidden="true"><path d="M0 -1Q-0.016 0.016 1 0Q-0.016 -0.016 0 1Q0.016 -0.016 -1 0Q0.016 0.016 0 -1Z"/></svg>
+  </a>
   <div class="links">
-    <a href="#journey" data-en="Journey">سفر</a>
-    <a href="#about" data-en="Story">داستان</a>
-    <a href="#listen" data-en="Listen">بشنو</a>
+    <a href="#/" data-nav="home" data-en="Journey">سفر</a>
+    <a href="#/songs" data-nav="songs" data-en="Songs">آهنگ‌ها</a>
+    <a href="#/about" data-nav="about" data-en="Story">داستان</a>
     <button id="lang" type="button" aria-label="English">EN</button>
   </div>
 </nav>
 
-<main>
-  <!-- 1. hero -->
-  <section id="hero">
-    <div class="art" id="art">
-      <svg id="hg" aria-hidden="true"></svg>
-      <svg id="ghost" viewBox="-1.2 -1.2 2.4 2.4" aria-hidden="true"><path d="M0 -1Q-0.016 0.016 1 0Q-0.016 -0.016 0 1Q0.016 -0.016 -1 0Q0.016 0.016 0 -1Z"/></svg>
-      <img id="logoLetters" src="assets/setavaz-letters.svg" alt="ستاواز" data-en-alt="Setavaz">
-    </div>
-    <h1 class="title intro" data-en="Song of the Stars">آواز ستاره‌ها</h1>
-    <p class="subline intro" data-en="Four songs, one journey. From the desert to the sea.">چهار آهنگ، یک سفر. از کویر تا دریا.</p>
-    <button id="play" class="intro" type="button" aria-label="پخش" data-en-aria="Play">
-      <span class="disc"><span class="ico-play"></span><span class="ico-pause"><i></i><i></i></span></span>
-      <span class="lbl" id="playLbl">بزن تا بشنوی</span>
-    </button>
-    <div class="prelude intro" data-en="Prelude: Kahkeshan, the sky the star comes from">پیش‌درآمد: <span class="lat">Kahkeshan</span>، آسمانی که ستاره از آن می‌آید</div>
-    <div class="cue intro"><span data-en="Follow the journey">سفر را دنبال کن</span><i></i></div>
-  </section>
+<main id="main">
+  <!-- ================= HOME ================= -->
+  <div class="page" id="p-home" data-page="home">
+    <section id="hero">
+      <div class="art" id="art">
+        <svg id="hg" aria-hidden="true"></svg>
+        <svg id="ghost" viewBox="-1.2 -1.2 2.4 2.4" aria-hidden="true"><path d="M0 -1Q-0.016 0.016 1 0Q-0.016 -0.016 0 1Q0.016 -0.016 -1 0Q0.016 0.016 0 -1Z"/></svg>
+        <img id="logoLetters" src="assets/setavaz-letters.svg" alt="ستاواز" data-en-alt="Setavaz">
+      </div>
+      <h1 class="title intro" data-en="Song of the Stars">آواز ستاره‌ها</h1>
+      <p class="subline intro" data-en="One star, one journey. Every song is a chapter.">یک ستاره، یک سفر. هر آهنگ یک فصل است.</p>
+      <button class="bigplay intro" id="heroPlay" type="button" data-play="kahkeshan" aria-label="پخش پیش‌درآمد" data-en-aria="Play the prelude">
+        <span class="disc"><span class="ico"><span class="tri"></span><span class="bars"><i></i><i></i></span><span class="spin"></span></span></span>
+        <span class="lbl" data-lbl data-en="Tap to listen">بزن تا بشنوی</span>
+      </button>
+      <div class="prelude intro"><span data-en="Prelude:">پیش‌درآمد:</span> <a href="#/song/kahkeshan" class="lat">Kahkeshan</a><span data-en=", the sky the star comes from">، آسمانی که ستاره از آن می‌آید</span></div>
+      <div class="cue intro"><span data-en="Follow the star">ستاره را دنبال کن</span><i></i></div>
+    </section>
 
-  <!-- 2. the journey -->
-  <section id="journey" aria-label="سفر ستاره">
-    <div class="stage" id="stage">
-      <svg id="scn" aria-hidden="true"></svg>
-      <div class="panel">
-        <div class="kick"><b>01</b><span data-en="The star's journey">سفر ستاره</span></div>
-        <div class="jmap" id="jmap"><span class="fill" id="jfill"></span><i></i><i></i><i></i><i></i></div>
-        <div class="ch" id="ch">
-          <div class="num" id="chNum">منزل یکم</div>
-          <h2 id="chTitle">مهر</h2>
-          <span class="latn" id="chLat">Mehr</span>
-          <p id="chLine"></p>
-          <div class="extra" id="chExtra"></div>
-          <button class="pill" id="chListen" type="button"><span class="tri"></span><span id="chListenLbl">بشنو</span></button>
+    <section id="journey" aria-label="سفر ستاره" data-en-aria="The star's journey">
+      <div class="stage" id="stage">
+        <svg class="scn" id="scn" aria-hidden="true"></svg>
+        <div class="panel">
+          <div class="kick"><b>01</b><span data-en="The journey">سفر</span></div>
+          <div class="jmap" id="jmap"><span class="fill" id="jfill"></span><i></i><i></i><i></i><i></i></div>
+          <div class="ch" id="ch">
+            <div class="num" id="chNum">فصل یکم</div>
+            <h2 id="chTitle" class="lat">Mehr</h2>
+            <span class="fa-name" id="chFa">مهر</span>
+            <p id="chLine"></p>
+            <div class="extra" id="chExtra" aria-live="off"></div>
+            <div class="btnrow">
+              <button class="pill" id="chListen" type="button"><span class="t"></span><span id="chListenLbl">بشنو</span></button>
+              <a class="pill ghost" id="chOpen" href="#/song/mehr"><span id="chOpenLbl">قصهٔ این فصل</span> <span class="arr" aria-hidden="true">←</span></a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 3. story -->
-  <section class="block" id="about">
-    <div class="grid">
+    <section class="block" id="home-songs">
       <div class="reveal">
-        <div class="sec-k"><b>02</b><span data-en="About">داستان ستاواز</span></div>
-        <h3 data-en="The song of a star">آواز یک ستاره</h3>
-        <p data-en="Setavaz comes from two Persian words: setareh, the star, and avaz, the song.">ستاواز از دو کلمه آمده: ستاره و آواز.</p>
-        <p data-en="The gold star in our logo is the traveller. Every song is one stop on its way, from the desert to the sea.">ستارهٔ طلایی لوگو مسافر ماست. هر آهنگ یک منزل از راه اوست، از کویر تا دریا.</p>
-        <div class="three">
-          <span data-en="Persian instruments">ساز ایرانی</span>
-          <span data-en="A beat of today">ضرب امروزی</span>
-          <span data-en="Girih patterns">نقش گره</span>
+        <div class="sec-k"><b>02</b><span data-en="All songs">همهٔ آهنگ‌ها</span></div>
+        <h3 data-en="Seven songs, one sky">هفت آهنگ، یک آسمان</h3>
+        <p class="lead" data-en="A prelude in the sky, four chapters of the journey, and two singles. Each one plays right here.">یک پیش‌درآمد در آسمان، چهار فصل سفر و دو تک‌آهنگ. همه همین‌جا پخش می‌شوند.</p>
+      </div>
+      <ul class="tracks reveal" id="homeTracks"></ul>
+      <a class="more reveal" href="#/songs"><span data-en="See every song">همهٔ آهنگ‌ها را ببین</span> <span aria-hidden="true" class="arr">←</span></a>
+    </section>
+
+    <section class="block" id="about-teaser">
+      <div class="grid">
+        <div class="reveal">
+          <div class="sec-k"><b>03</b><span data-en="The story">داستان ستاواز</span></div>
+          <h3 data-en="The song of a star">آواز یک ستاره</h3>
+          <p class="lead" data-en="Setavaz comes from two Persian words: setareh, the star, and avaz, the song. The gold star in our logo is the traveller, and every song is one chapter of its way.">ستاواز از دو کلمه آمده: ستاره و آواز. ستارهٔ طلایی لوگو مسافر ماست و هر آهنگ یک فصل از راه اوست.</p>
+          <div class="three">
+            <span data-en="Persian instruments">ساز ایرانی</span>
+            <span data-en="A beat of today">ضرب امروزی</span>
+            <span data-en="Girih patterns">نقش گره</span>
+          </div>
+          <a class="more" href="#/about"><span data-en="Read the story">داستان را بخوان</span> <span aria-hidden="true" class="arr">←</span></a>
+        </div>
+        <div id="orn" class="orn reveal" aria-hidden="true"><svg id="ornSvg" viewBox="-1.25 -1.25 2.5 2.5"></svg></div>
+      </div>
+    </section>
+
+    <section class="block" id="listen">
+      <div class="reveal">
+        <div class="sec-k"><b>04</b><span data-en="Listen">همه‌جا بشنو</span></div>
+        <h3 data-en="Wherever you listen">هر جا گوش می‌دهی</h3>
+        <p class="lead" data-en="The songs are coming to every service, one by one. Until then, they play here.">آهنگ‌ها کم‌کم به همهٔ سرویس‌ها می‌آیند. تا آن موقع، همین‌جا پخش می‌شوند.</p>
+        <div class="listen-row" data-svc></div>
+      </div>
+    </section>
+
+    <section class="block" id="news">
+      <div class="reveal">
+        <div class="sec-k"><b>05</b><span data-en="Stay close">خبرم کن</span></div>
+        <h3 data-en="When a new chapter arrives">وقتی فصل تازه آمد</h3>
+        <p class="lead" data-en="You get one short email. That is all.">یک ایمیل کوتاه می‌گیری. همین.</p>
+        <form class="news" id="newsForm" novalidate>
+          <label class="sr" for="email" data-en="Your email">ایمیل تو</label>
+          <input id="email" type="email" inputmode="email" autocomplete="email" placeholder="ایمیل تو" data-en-ph="Your email">
+          <button type="submit" data-en="Let me know">خبرم کن</button>
+        </form>
+        <div class="note" id="newsNote" aria-live="polite"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= SONG ================= -->
+  <div class="page" id="p-song" data-page="song">
+    <section class="sstage" id="sstage">
+      <svg class="scn" id="sscn" aria-hidden="true"></svg>
+      <div class="shead" id="shead">
+        <div class="kick"><b id="sNo">01</b><span id="sKind"></span></div>
+        <h1 id="sTitle" class="lat"></h1>
+        <span class="fa-name" id="sFa"></span>
+        <p class="line" id="sLine"></p>
+        <div class="sctrl">
+          <button class="bigplay" id="sPlay" type="button" data-play="">
+            <span class="disc"><span class="ico"><span class="tri"></span><span class="bars"><i></i><i></i></span><span class="spin"></span></span></span>
+            <span class="lbl"><span data-lbl></span><small id="sLen"></small></span>
+          </button>
         </div>
       </div>
-      <div id="orn" class="reveal" aria-hidden="true"><svg id="ornSvg" viewBox="-1.25 -1.25 2.5 2.5"></svg></div>
+      <div class="sprog" aria-hidden="true"><i id="sProg"></i></div>
+    </section>
+    <div class="sbody">
+      <section class="story reveal" id="sStory"><div class="sec-k"><b>A</b><span data-en="The story">قصه</span></div><h2 class="h2s" id="sStoryH"></h2><div id="sStoryP"></div></section>
+      <section class="reveal" id="sMapS"><div class="sec-k"><b>B</b><span data-en="The story in the song">قصه در آهنگ</span></div><h2 class="h2s" data-en="Every part has a moment">هر بخش یک لحظه</h2><ol class="smap" id="sMap"></ol><div class="note2" id="sMapNote"></div></section>
+      <section class="reveal full"><div class="sec-k"><b>C</b><span data-en="What each sound does">کار هر صدا</span></div><h2 class="h2s" data-en="Instruments have jobs">سازها کار دارند</h2><div class="jobs" id="sJobs"></div></section>
+      <section class="reveal full"><div class="sec-k"><b>D</b><span data-en="Credits">شناسنامه</span></div><dl class="credits" id="sCred"></dl></section>
+      <section class="reveal"><div class="sec-k"><b>E</b><span data-en="Listen on">شنیدن در</span></div><div class="listen-row" data-svc></div></section>
+      <section class="reveal full"><a class="next" id="sNext" href="#/"></a></section>
     </div>
-  </section>
+  </div>
 
-  <!-- 4. listen everywhere -->
-  <section class="block" id="listen">
-    <div class="reveal">
-      <div class="sec-k"><b>03</b><span data-en="Listen">همه‌جا بشنو</span></div>
-      <h3 data-en="Wherever you listen">هر جا گوش می‌دهی</h3>
-      <p data-en="The songs are coming to every service, one by one.">آهنگ‌ها کم‌کم به همهٔ سرویس‌ها می‌آیند.</p>
-      <div class="listen-row">
-        <a class="svc" href="#" data-soon>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4" fill="none" stroke="#F4C35A" stroke-width="1.2"/><path d="M10 9.2v5.6l4.6-2.8z" fill="#F4C35A"/></svg>
-          <span><span class="n">YouTube</span><small data-en="Soon">به‌زودی</small></span>
-        </a>
-        <a class="svc" href="#" data-soon>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="#F4C35A" stroke-width="1.2"/><path d="M7 9.6c3.4-1 7-.7 10 .9M7.6 12.6c2.8-.8 5.6-.5 8.1.8M8.3 15.4c2.1-.6 4.2-.4 6 .6" fill="none" stroke="#F4C35A" stroke-width="1.2" stroke-linecap="round"/></svg>
-          <span><span class="n">Spotify</span><small data-en="Soon">به‌زودی</small></span>
-        </a>
-        <a class="svc" href="#" data-soon>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 17.5V6.8l9-2.3v10.7" fill="none" stroke="#F4C35A" stroke-width="1.2"/><circle cx="7.4" cy="17.6" r="2.1" fill="none" stroke="#F4C35A" stroke-width="1.2"/><circle cx="16.4" cy="15.3" r="2.1" fill="none" stroke="#F4C35A" stroke-width="1.2"/></svg>
-          <span><span class="n">Apple Music</span><small data-en="Soon">به‌زودی</small></span>
-        </a>
+  <!-- ================= SONGS ================= -->
+  <div class="page" id="p-songs" data-page="songs">
+    <header class="ph">
+      <div class="sec-k"><b>01</b><span data-en="The catalogue">فهرست</span></div>
+      <h1 data-en="All the songs">همهٔ آهنگ‌ها</h1>
+      <p class="lead" data-en="The prelude is the sky. Then four chapters, from the desert to the sea. The singles are stops along the way.">پیش‌درآمد آسمان است. بعد چهار فصل، از کویر تا دریا. تک‌آهنگ‌ها منزل‌هایی میان راه‌اند.</p>
+    </header>
+    <section class="block" style="padding-top:20px" id="catalog"></section>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <div class="page" id="p-about" data-page="about">
+    <header class="ph">
+      <div class="sec-k"><b>01</b><span data-en="About">درباره</span></div>
+      <h1 data-en="The story of Setavaz">داستان ستاواز</h1>
+      <p class="lead" data-en="Setavaz is instrumental music for listening: for late nights, long drives, workouts and high-energy moments.">ستاواز موسیقی بی‌کلام برای شنیدن است: برای شب، رانندگی، تمرین و لحظه‌های پرانرژی.</p>
+    </header>
+    <section class="block" style="padding-top:40px">
+      <div class="grid" id="about-grid" style="display:grid;gap:40px;align-items:center">
+        <div class="prose reveal">
+          <div class="sec-k"><b>02</b><span data-en="The name">اسم</span></div>
+          <h3 data-en="A star and a song">ستاره و آواز</h3>
+          <p data-en="Setavaz is setareh, the star, and avaz, the song. Put together: the song of the stars.">ستاواز یعنی ستاره و آواز. کنار هم: آواز ستاره‌ها.</p>
+          <p data-en="The gold star with four points in our logo is not a decoration. It is the traveller. It leaves the sky, walks across Iran, and every song tells one part of its way.">ستارهٔ طلایی چهارپر لوگوی ما تزئین نیست. مسافر است. از آسمان جدا می‌شود، از ایران می‌گذرد و هر آهنگ یک تکه از راهش را می‌گوید.</p>
+          <p data-en="Each song keeps the same rule: the start sets the scene, the beat is the event, the pause is the problem, the peak is the arrival, and the end is the farewell.">همهٔ آهنگ‌ها یک قاعده دارند: شروع آهنگ صحنه را می‌چیند، ضرب اتفاق است، مکث مشکل است، اوج رسیدن است و پایان خداحافظی.</p>
+        </div>
+        <div class="orn reveal" id="aboutOrn" aria-hidden="true"><svg id="aboutOrnSvg" viewBox="-1.25 -1.25 2.5 2.5"></svg></div>
       </div>
-    </div>
-  </section>
-
-  <!-- 5. newsletter -->
-  <section class="block" id="news">
-    <div class="reveal">
-      <div class="sec-k"><b>04</b><span data-en="Stay close">خبرم کن</span></div>
-      <h3 data-en="When a new song arrives">وقتی آهنگ تازه آمد</h3>
-      <p data-en="You get one short email. That is all.">یک ایمیل کوتاه می‌گیری. همین.</p>
-      <form class="news" id="newsForm" novalidate>
-        <label class="sr" for="email" data-en="Your email">ایمیل تو</label>
-        <input id="email" type="email" inputmode="email" autocomplete="email" placeholder="ایمیل تو" data-en-ph="Your email">
-        <button type="submit" data-en="Let me know">خبرم کن</button>
-      </form>
-      <div class="note" id="newsNote" aria-live="polite"></div>
-    </div>
-  </section>
+    </section>
+    <section class="block" style="padding-top:20px">
+      <div class="reveal">
+        <div class="sec-k"><b>03</b><span data-en="The way">راه</span></div>
+        <h3 data-en="From the desert to the sea">از کویر تا دریا</h3>
+        <nav class="route" id="route" aria-label="فصل‌ها" data-en-aria="Chapters"></nav>
+      </div>
+    </section>
+    <section class="block" style="padding-top:20px">
+      <div class="prose reveal">
+        <div class="sec-k"><b>04</b><span data-en="How it is made">چطور ساخته می‌شود</span></div>
+        <h3 data-en="Made with AI, chosen by a person">با هوش مصنوعی، انتخاب با یک نفر</h3>
+        <p data-en="Each track is made several times with AI music tools. A person listens to every take, drops most of them, keeps the one that works, names it and finishes it.">هر آهنگ چند بار با ابزار هوش مصنوعی ساخته می‌شود. یک نفر همه را گوش می‌دهد، بیشترشان را کنار می‌گذارد و فقط آن را که درست است نگه می‌دارد، اسم می‌گذارد و آماده می‌کند.</p>
+        <div class="facts">
+          <div><b data-en="Persian instruments">ساز ایرانی</b><span data-en="Kamancheh, santur, ney, barbat, daf and tombak, over a beat of today.">کمانچه، سنتور، نی، بربط، دف و تنبک، روی ضرب امروزی.</span></div>
+          <div><b data-en="No words">بی‌کلام</b><span data-en="Only open vowels, tahrir and the answer of a group. Never invented words.">فقط صدای باز، تحریر و جواب گروه. هیچ کلمهٔ ساختگی.</span></div>
+          <div><b data-en="For listening only">فقط برای شنیدن</b><span data-en="The tracks cannot be downloaded and are not for use in other videos.">آهنگ‌ها دانلود نمی‌شوند و برای گذاشتن در ویدیوی دیگران نیستند.</span></div>
+        </div>
+        <p style="margin-top:28px"><span data-en="Contact:">تماس:</span> <a class="lat" href="mailto:info@ahura.cloud" style="color:var(--gold)">info@ahura.cloud</a></p>
+      </div>
+    </section>
+  </div>
 </main>
 
 <footer>
   <img src="assets/setavaz-mark.svg" alt="ستاواز" data-en-alt="Setavaz">
+  <div class="ai" data-en="Made with AI music tools, chosen and finished by a person. For listening only.">ساخته با ابزار هوش مصنوعی؛ انتخاب و آماده‌سازی با یک نفر. فقط برای شنیدن.</div>
   <div class="fl">
-    <a href="https://setavaz.ahura.cloud/imprint" data-en="Imprint">اطلاعات قانونی</a>
+    <a href="#/songs" data-en="Songs">آهنگ‌ها</a>
+    <a href="#/about" data-en="About">درباره</a>
+    <a href="https://setavaz.ahura.cloud/imprint" rel="noopener" data-en="Imprint">اطلاعات قانونی</a>
+    <a href="https://setavaz.ahura.cloud/privacy" rel="noopener" data-en="Privacy">حریم خصوصی</a>
     <a href="mailto:info@ahura.cloud" class="lat">info@ahura.cloud</a>
-    <a href="https://ahura.cloud" data-en="Design: Ahura">طراحی: اهورا</a>
+    <a href="https://ahura.cloud" rel="noopener" data-en="Design: Ahura">طراحی: اهورا</a>
   </div>
   <div class="cr" data-en="© 2026 Setavaz">© ۲۰۲۶ ستاواز</div>
 </footer>
 
-<!-- the traveller: the gold star of the logo -->
+<div id="veil" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
 <div id="trav" aria-hidden="true">
   <div class="halo" id="travHalo"></div>
   <svg viewBox="-1 -1 2 2">
@@ -369,894 +237,23 @@ footer .cr { margin-top: 12px; }
   </svg>
 </div>
 
-<div id="player" role="region" aria-label="پخش‌کننده">
-  <div id="bar" role="slider" aria-label="جای پخش" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+<div id="player" role="region" aria-label="پخش‌کننده" data-en-aria="Player">
+  <div id="bar" role="slider" aria-label="جای پخش" data-en-aria="Position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
     <div id="barFill"></div>
     <svg id="barHead" viewBox="-1 -1 2 2"><path d="M0 -1Q-0.016 0.016 1 0Q-0.016 -0.016 0 1Q0.016 -0.016 -1 0Q0.016 0.016 0 -1Z" fill="#F4C35A"/></svg>
   </div>
   <svg id="seal" viewBox="-1.15 -1.15 2.3 2.3" aria-hidden="true"></svg>
-  <div class="meta"><b>Kahkeshan</b><small id="pTime">ستاواز</small></div>
+  <div class="meta"><a id="pTitle" href="#/song/kahkeshan">Kahkeshan</a><small id="pTime">ستاواز</small></div>
   <canvas id="frz" aria-hidden="true"></canvas>
-  <button id="pp" type="button" aria-label="پخش"><span class="ico-play"></span><span class="ico-pause"><i></i><i></i></span></button>
+  <button id="pnext" type="button" aria-label="آهنگ بعدی" data-en-aria="Next song"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l7 5-7 5z" fill="currentColor"/><rect x="11.5" y="3" width="1.6" height="10" fill="currentColor"/></svg></button>
+  <button id="pp" type="button" aria-label="پخش" data-en-aria="Play"><span class="ico"><span class="tri"></span><span class="bars"><i></i><i></i></span><span class="spin"></span></span></button>
 </div>
 <div id="toast" role="status"></div>
+<audio id="au" preload="none" playsinline></audio>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>
-'use strict';
-/* =====================================================================
-   Setavaz website prototype, 21 Nov 2026.
-   One rule: nothing moves without a reason. Every motion comes from
-   the music (Web Audio analyser), from the listener (tap, scroll) or
-   from the story (the star travels). When the sound stops, the page calms.
-   ===================================================================== */
-(function () {
-const $ = (s, r = document) => r.querySelector(s);
-const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
-const RM = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
-const HAS_GSAP = !!(window.gsap && window.ScrollTrigger);
-if (HAS_GSAP) gsap.registerPlugin(ScrollTrigger);
-const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
-const lerp = (a, b, k) => a + (b - a) * k;
-const ease = (x) => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
-const easeOut = (x) => 1 - Math.pow(1 - clamp(x), 3);
-const sstep = (x) => { x = clamp(x); return x * x * (3 - 2 * x); };
-const f1 = (n) => Math.round(n * 10) / 10;
-const AUDIO_URL = 'assets/kahkeshan-excerpt.mp3';
-const STAR_D = 'M0 -1Q-0.016 0.016 1 0Q-0.016 -0.016 0 1Q0.016 -0.016 -1 0Q0.016 0.016 0 -1Z';
-const SVGNS = 'http://www.w3.org/2000/svg';
-let LANG = 'fa';
-const faD = (s) => String(s).replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
-const num = (s) => (LANG === 'fa' ? faD(s) : String(s));
-const fmt = (sec) => { sec = Math.max(0, Math.floor(sec)); return num(Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0')); };
-let seedV = 11; const rnd = () => (seedV = (seedV * 16807) % 2147483647) / 2147483647;
-const reseed = (s) => { seedV = s; };
-
-/* ---------- the girih: a classical rosette (n petals around an inner star) ---------- */
-function girih(n, p = {}) {
-  const a = 2 * Math.PI / n, r0 = p.r0 ?? .30, r1 = p.r1 ?? .58, r2 = p.r2 ?? .86, d = (p.d ?? .36) * a;
-  const pol = (r, th) => [r * Math.cos(th), r * Math.sin(th)];
-  const petals = [], nodes = [];
-  for (let k = 0; k < n; k++) {
-    const th = k * a - Math.PI / 2;
-    const P0 = pol(r0, th), A = pol(r1, th - a / 2), B = pol(r2, th - d), T = pol(1, th), C = pol(r2, th + d), D = pol(r1, th + a / 2);
-    petals.push([[T, C], [C, D], [D, P0], [P0, A], [A, B], [B, T]]);
-    nodes.push({ x: T[0], y: T[1], r: 1, big: 1 }, { x: D[0], y: D[1], r: r1, big: .55 });
-  }
-  const s = Math.floor(n / 2) - 1, rr = r0 * .98, inner = [];
-  for (let k = 0; k < n; k++) inner.push([pol(rr, k * a - Math.PI / 2), pol(rr, (k + s) * a - Math.PI / 2)]);
-  const segs = [];
-  petals.forEach((pt, k) => { pt.forEach((sg) => segs.push(sg)); segs.push(inner[k]); });
-  return { n, petals, inner, nodes, segs };
-}
-const segD = (sg, cx = 0, cy = 0, R = 1) => `M${(cx + sg[0][0] * R).toFixed(3)} ${(cy + sg[0][1] * R).toFixed(3)}L${(cx + sg[1][0] * R).toFixed(3)} ${(cy + sg[1][1] * R).toFixed(3)}`;
-
-/* =====================================================================
-   SKY: a Milky Way painted once (CSS drifts it slowly), plus a light
-   canvas for twinkles and shooting stars.
-   ===================================================================== */
-const mw = $('#mw'), tw = $('#tw'), tg = tw.getContext('2d');
-let VW = innerWidth, VH = innerHeight, TDPR = Math.min(devicePixelRatio || 1, 1.5);
-let STARS = [];
-function paintMilkyWay() {
-  const size = Math.ceil(Math.hypot(innerWidth, innerHeight) * 1.1);
-  const dpr = Math.min(devicePixelRatio || 1, innerWidth < 700 ? 1.25 : 1);
-  mw.width = Math.round(size * dpr); mw.height = Math.round(size * dpr);
-  mw.style.width = size + 'px'; mw.style.height = size + 'px';
-  const x = mw.getContext('2d'); x.scale(dpr, dpr);
-  const w = size, h = size; reseed(99);
-  const phone = innerWidth < 700;
-  const ang = innerWidth < innerHeight ? -1.08 : -0.46, cx = w / 2, cy = h / 2, L = Math.hypot(w, h), ux = Math.cos(ang), uy = Math.sin(ang), wid = Math.min(innerWidth, innerHeight) * (phone ? .24 : .17);
-  const along = (t, o) => [cx + ux * t * L * .55 - uy * o, cy + uy * t * L * .55 + ux * o];
-  x.globalCompositeOperation = 'lighter';
-  const blobs = phone ? 900 : 1700;
-  for (let i = 0; i < blobs; i++) {
-    const t = rnd() * 2 - 1, o = (rnd() + rnd() + rnd() - 1.5) * wid * 1.1, [px, py] = along(t, o), core = Math.exp(-t * t * 6), rad = wid * (.06 + rnd() * .32) * (.6 + core);
-    const warm = core * .9 + rnd() * .2, col = warm > .58 ? '255,176,112' : '96,124,220', a = .02 + .042 * core;
-    const gr = x.createRadialGradient(px, py, 0, px, py, rad); gr.addColorStop(0, `rgba(${col},${a})`); gr.addColorStop(1, 'rgba(0,0,0,0)');
-    x.fillStyle = gr; x.fillRect(px - rad, py - rad, rad * 2, rad * 2);
-  }
-  x.globalCompositeOperation = 'source-over';
-  for (let i = 0; i < (phone ? 380 : 700); i++) {
-    const t = rnd() * 1.6 - .8, o = (rnd() - .5) * wid * .6, [px, py] = along(t, o), rad = wid * (.03 + rnd() * .14);
-    const gr = x.createRadialGradient(px, py, 0, px, py, rad); gr.addColorStop(0, 'rgba(4,4,14,.34)'); gr.addColorStop(1, 'rgba(4,4,14,0)');
-    x.fillStyle = gr; x.fillRect(px - rad, py - rad, rad * 2, rad * 2);
-  }
-  const dots = phone ? 7000 : 16000;
-  for (let i = 0; i < dots; i++) {
-    let px, py;
-    if (rnd() < .55) { const t = rnd() * 2 - 1, o = (rnd() + rnd() - 1) * wid * 1.3; [px, py] = along(t, o); } else { px = rnd() * w; py = rnd() * h; }
-    const b = Math.pow(rnd(), 6), s = .45 + b * 1.9;
-    x.fillStyle = `rgba(255,${235 + b * 20 | 0},${215 + rnd() * 40 | 0},${.22 + .7 * rnd()})`; x.fillRect(px, py, s, s);
-  }
-  mw.classList.add('on');
-}
-function sizeTwinkle() {
-  VW = innerWidth; VH = innerHeight;
-  tw.width = Math.round(VW * TDPR); tw.height = Math.round(VH * TDPR);
-  reseed(7);
-  const n = Math.min(220, Math.round(VW * VH / 5200));
-  STARS = Array.from({ length: n }, (_, i) => ({ x: rnd(), y: rnd(), s: .5 + rnd() * 1.3, p: rnd() * 6.28, f: .5 + rnd() * 1.8, big: i < 9 }));
-  skyDirty = true;
-}
-let skyDirty = true, shoot = null, nextIdleShoot = 8;
-function starPath(c, x, y, s) { const k = s * .016; c.beginPath(); c.moveTo(x, y - s); c.quadraticCurveTo(x - k, y + k, x + s, y); c.quadraticCurveTo(x - k, y - k, x, y + s); c.quadraticCurveTo(x + k, y - k, x - s, y); c.quadraticCurveTo(x + k, y + k, x, y - s); c.closePath(); }
-function launchShoot(t) {
-  if (RM || shoot) return;
-  const fromRight = rnd() < .5;
-  shoot = { t0: t, x0: fromRight ? .78 + rnd() * .2 : .02 + rnd() * .2, y0: .04 + rnd() * .22, dx: (fromRight ? -1 : 1) * (.28 + rnd() * .18), dy: .16 + rnd() * .1 };
-}
-function drawSky(t) {
-  if (RM && !skyDirty) return;
-  skyDirty = false;
-  const c = tg; c.setTransform(TDPR, 0, 0, TDPR, 0, 0); c.clearRect(0, 0, VW, VH);
-  const lift = .55 + FX.full * .7;
-  for (const s of STARS) {
-    const tw1 = RM ? .75 : .35 + .65 * Math.abs(Math.sin(t * s.f + s.p));
-    const a = clamp(tw1 * lift * (s.big ? 1 : .8));
-    if (s.big) {
-      const x = s.x * VW, y = s.y * VH, r = 2.2 + s.s * 1.4;
-      c.fillStyle = `rgba(255,238,196,${a * .9})`; starPath(c, x, y, r * (1 + FX.kick * .25)); c.fill();
-    } else {
-      c.fillStyle = `rgba(255,248,232,${a})`; c.fillRect(s.x * VW, s.y * VH, s.s, s.s);
-    }
-  }
-  if (shoot) {
-    const k = (t - shoot.t0) / 1.0;
-    if (k > 1) { shoot = null; } else {
-      const e = easeOut(k), x = VW * (shoot.x0 + shoot.dx * e), y = VH * (shoot.y0 + shoot.dy * e);
-      const ang = Math.atan2(shoot.dy * VH, shoot.dx * VW), tail = Math.min(VW, VH) * .22 * (1 - k * .5);
-      const gr = c.createLinearGradient(x, y, x - Math.cos(ang) * tail, y - Math.sin(ang) * tail);
-      gr.addColorStop(0, `rgba(255,240,210,${1 - k})`); gr.addColorStop(1, 'rgba(255,200,120,0)');
-      c.strokeStyle = gr; c.lineWidth = 1.4; c.beginPath(); c.moveTo(x, y); c.lineTo(x - Math.cos(ang) * tail, y - Math.sin(ang) * tail); c.stroke();
-      c.fillStyle = `rgba(255,232,180,${1 - k})`; starPath(c, x, y, 3.2); c.fill();
-    }
-  }
-}
-
-/* =====================================================================
-   AUDIO: the music is decoded and played through Web Audio so an
-   AnalyserNode can read it. If the file cannot be read (other origin),
-   a plain <audio> plays it and the visuals follow a gentle stand-in pulse.
-   ===================================================================== */
-const A = { ctx: null, an: null, gain: null, buf: null, src: null, el: null, mode: 'buffer', ready: null, playing: false, offset: 0, startAt: 0, dur: 42, bins: null, prev: null };
-function prepareAudio() {
-  if (A.ready) return A.ready;
-  A.el = new Audio(); A.el.preload = 'none'; A.el.src = AUDIO_URL;
-  A.el.addEventListener('ended', () => { if (A.mode === 'element') onEnded(); });
-  A.el.addEventListener('loadedmetadata', () => { if (A.mode === 'element' && isFinite(A.el.duration)) A.dur = A.el.duration; });
-  const AC = window.AudioContext || window.webkitAudioContext;
-  if (!AC || !window.fetch) { A.mode = 'element'; A.ready = Promise.resolve(); return A.ready; }
-  try {
-    A.ctx = new AC();
-    A.an = A.ctx.createAnalyser(); A.an.fftSize = 2048; A.an.smoothingTimeConstant = .55;
-    A.gain = A.ctx.createGain(); A.an.connect(A.gain); A.gain.connect(A.ctx.destination);
-    A.bins = new Uint8Array(A.an.frequencyBinCount); A.prev = new Uint8Array(A.an.frequencyBinCount);
-  } catch (e) { A.mode = 'element'; A.ready = Promise.resolve(); return A.ready; }
-  A.ready = fetch(AUDIO_URL).then((r) => { if (!r.ok) throw new Error('fetch'); return r.arrayBuffer(); })
-    .then((ab) => new Promise((res, rej) => A.ctx.decodeAudioData(ab, res, rej)))
-    .then((b) => { A.buf = b; A.dur = b.duration; })
-    .catch(() => { A.mode = 'element'; });
-  return A.ready;
-}
-function curTime() {
-  if (A.mode === 'element') return A.el ? (A.el.currentTime || 0) : 0;
-  return A.playing ? A.ctx.currentTime - A.startAt : A.offset;
-}
-async function play() {
-  if (A.busy) return;
-  prepareAudio();
-  if (A.ctx && A.ctx.state !== 'running') { try { A.ctx.resume(); } catch (e) {} }
-  try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
-  if (A.offset >= A.dur - .05) A.offset = 0;
-  if (A.mode === 'buffer' && !A.buf) {
-    document.body.classList.add('loading'); A.busy = true;
-    await A.ready;
-    document.body.classList.remove('loading'); A.busy = false;
-  }
-  if (A.mode === 'element') {
-    try { A.el.currentTime = A.offset; await A.el.play(); } catch (e) { toast(LANG === 'fa' ? 'پخش نشد. یک بار دیگر بزن.' : 'It did not start. Tap once more.'); return; }
-  } else {
-    const s = A.ctx.createBufferSource(); s.buffer = A.buf; s.connect(A.an);
-    s.onended = () => { if (A.src === s) { A.src = null; onEnded(); } };
-    s.start(0, A.offset); A.startAt = A.ctx.currentTime - A.offset; A.src = s;
-  }
-  A.playing = true; uiPlay();
-}
-function pause() {
-  if (!A.playing) return;
-  A.offset = curTime();
-  if (A.mode === 'element') A.el.pause();
-  else { const s = A.src; A.src = null; try { s.stop(); } catch (e) {} }
-  A.playing = false; uiPlay();
-}
-function onEnded() { A.playing = false; A.offset = A.dur; uiPlay(); }
-function toggle() { if (A.playing) pause(); else play(); }
-function seek(frac) { const was = A.playing; if (was) pause(); A.offset = clamp(frac) * A.dur; if (was) play(); else uiPlay(); }
-
-/* features read every frame */
-const FX = { low: 0, full: 0, kick: 0, b12: new Float32Array(12), b8: new Float32Array(8), avg: 0, lastKick: -9, kicked: false, flux: 0, fluxAvg: 0, lastShoot: -9, synthLast: 0 };
-function bandEdges(n, lo, hi) { const e = []; for (let i = 0; i <= n; i++) e.push(lo * Math.pow(hi / lo, i / n)); return e; }
-const E12 = bandEdges(12, 45, 11000), E8 = bandEdges(8, 45, 11000);
-function features(t, dt) {
-  FX.kicked = false;
-  const decay = Math.exp(-dt * 6);
-  FX.kick *= decay;
-  if (!A.playing) {
-    FX.low *= decay; FX.full *= Math.exp(-dt * 2.5);
-    for (let i = 0; i < 12; i++) FX.b12[i] *= Math.exp(-dt * 3);
-    for (let i = 0; i < 8; i++) FX.b8[i] *= Math.exp(-dt * 3);
-    return;
-  }
-  const ta = curTime();
-  if (A.mode === 'buffer' && A.an) {
-    A.an.getByteFrequencyData(A.bins);
-    const bins = A.bins, nb = bins.length, hz = A.ctx.sampleRate / 2 / nb;
-    let lo = 0, nlo = 0, fu = 0, nfu = 0, flux = 0;
-    for (let i = 1; i < nb; i++) {
-      const f = i * hz, v = bins[i];
-      if (f < 140) { lo += v; nlo++; }
-      if (f < 9000) { fu += v; nfu++; }
-      if (f > 2000 && f < 8000) { const d = v - A.prev[i]; if (d > 0) flux += d; }
-    }
-    A.prev.set(bins);
-    const low = Math.pow(lo / Math.max(1, nlo) / 255, 1.6) * 1.5, full = Math.min(1, fu / Math.max(1, nfu) / 255 * 2.3);
-    FX.low = low > FX.low ? lerp(FX.low, low, .6) : lerp(FX.low, low, .14);
-    FX.full = lerp(FX.full, full, .1);
-    const band = (E, arr) => { for (let j = 0; j < arr.length; j++) { const a = Math.max(1, Math.floor(E[j] / hz)), b = Math.max(a + 1, Math.ceil(E[j + 1] / hz)); let s = 0; for (let i = a; i < b && i < nb; i++) s += bins[i]; const v = Math.min(1, Math.pow(s / (b - a) / 255, 1.25) * 1.35); arr[j] = v > arr[j] ? lerp(arr[j], v, .5) : lerp(arr[j], v, .12); } };
-    band(E12, FX.b12); band(E8, FX.b8);
-    FX.avg = FX.avg * .92 + low * .08;
-    if (low > FX.avg * 1.32 && low > .26 && ta - FX.lastKick > .3) { FX.lastKick = ta; FX.kick = 1; FX.kicked = true; }
-    FX.fluxAvg = FX.fluxAvg * .96 + flux * .04;
-    if (flux > FX.fluxAvg * 2.6 && flux > 900 && t - FX.lastShoot > 6) { FX.lastShoot = t; launchShoot(t); }
-  } else {
-    // stand-in when the analyser cannot read the file: a calm 118 bpm pulse
-    const per = 60 / 118, ph = ta % per;
-    if (ph < FX.synthLast) { FX.kick = 1; FX.kicked = true; }
-    FX.synthLast = ph;
-    FX.low = Math.exp(-ph * 9) * .8; FX.full = lerp(FX.full, .5 + .15 * Math.sin(t * .7), .05);
-    for (let j = 0; j < 12; j++) FX.b12[j] = .35 + .3 * Math.sin(t * 1.3 + j * .9) * Math.sin(t * .37 + j);
-    for (let j = 0; j < 8; j++) FX.b8[j] = .35 + .3 * Math.sin(t * 1.7 + j * 1.1);
-  }
-}
-
-/* =====================================================================
-   HERO: the star map (12-petal rosette, the Kahkeshan girih) centred on
-   the logo's star. Each petal is one band of the music.
-   ===================================================================== */
-const hg = $('#hg'), art = $('#art'), logoImg = $('#logoLetters'), ghost = $('#ghost');
-const HG = girih(12);
-const hero = { petals: [], glowPetals: [], nodes: [], rings: [], ringI: 0, R: 160, cx: 0, cy: 0 };
-(function buildHero() {
-  let h = '<g class="gl" id="hgl" opacity="0">';
-  HG.petals.forEach((pt, k) => { h += `<g>${pt.concat([HG.inner[k]]).map((sg) => `<path pathLength="1" d="${segD(sg)}"/>`).join('')}</g>`; });
-  h += '</g><circle class="hc" r="1.13" fill="none" stroke="#F4C35A" opacity=".22"/><g class="ln" id="hln">';
-  HG.petals.forEach((pt, k) => { h += `<g class="pet">${pt.concat([HG.inner[k]]).map((sg) => `<path pathLength="1" d="${segD(sg)}"/>`).join('')}</g>`; });
-  h += '</g>';
-  HG.nodes.forEach((n) => { h += `<path class="nd" d="${STAR_D}" opacity="0" transform="translate(${n.x.toFixed(3)} ${n.y.toFixed(3)}) scale(${(.026 + .022 * n.big).toFixed(3)})"/>`; });
-  for (let i = 0; i < 3; i++) h += '<circle class="ring kr" r=".5" opacity="0"/>';
-  hg.setAttribute('viewBox', '-1.45 -1.45 2.9 2.9');
-  hg.innerHTML = h;
-  hero.petals = $$('#hln .pet', hg); hero.glow = $('#hgl', hg);
-  hero.nodes = $$('.nd', hg); hero.rings = $$('.kr', hg).map((el) => ({ el, born: -9 }));
-  hero.hc = $('.hc', hg);
-})();
-function layoutHero() {
-  const vw = innerWidth, vh = innerHeight;
-  const lw = Math.min(vw * .74, vh * .40, 440);
-  art.style.width = lw + 'px';
-  const R = Math.min(vw * .46, vh * .27, 300);
-  const sx = .5240 * lw, sy = .2238 * (lw * 2117.78 / 2915.78);
-  art.style.paddingTop = Math.max(0, R * 1.05 - sy) + 'px';
-  const top = Math.max(0, R * 1.05 - sy);
-  const S = R * 1.45 * 2;
-  hg.style.width = S + 'px'; hg.style.height = S + 'px';
-  hg.style.left = (sx - S / 2) + 'px'; hg.style.top = (top + sy - S / 2) + 'px';
-  const gs = (lw * .08626) * 2.4;
-  ghost.style.width = gs + 'px'; ghost.style.height = gs + 'px';
-  ghost.style.left = (sx - gs / 2) + 'px'; ghost.style.top = (top + sy - gs / 2) + 'px';
-  hero.R = R;
-  const u = 1 / R;
-  $('#hln', hg).setAttribute('stroke-width', (1.15 * u).toFixed(5));
-  hero.glow.setAttribute('stroke-width', (5 * u).toFixed(5));
-  hero.glow.setAttribute('stroke-opacity', '.22');
-  hero.hc.setAttribute('stroke-width', (.8 * u).toFixed(5));
-}
-function heroAnchor() {
-  const r = logoImg.getBoundingClientRect();
-  return { x: r.left + .5240 * r.width, y: r.top + .2238 * r.height, r: .08626 * r.width, bottom: r.bottom };
-}
-let heroIntroDone = RM || !HAS_GSAP;
-function heroFrame(t) {
-  const playing = A.playing;
-  for (let k = 0; k < 12; k++) {
-    const o = playing ? .32 + .68 * FX.b12[(k + 9) % 12] : (heroIntroDone && !RM ? .62 + .12 * Math.sin(t * .6 + k * .52) : .7);
-    const el = hero.petals[k];
-    const v = f1(o * 100) / 100;
-    if (el._o !== v) { el._o = v; el.setAttribute('opacity', v); }
-  }
-  const g = f1((playing ? .1 + .9 * FX.full : 0) * 100) / 100;
-  if (hero.glow._o !== g) { hero.glow._o = g; hero.glow.setAttribute('opacity', g); }
-  if (FX.kicked) { const rg = hero.rings[hero.ringI++ % 3]; rg.born = t; }
-  const rings = [];
-  for (const rg of hero.rings) {
-    const d = (t - rg.born) / (RM ? 1.2 : .8);
-    if (d >= 0 && d < 1) {
-      const r = lerp(.45, 1.38, easeOut(d)); rings.push({ r, a: 1 - d });
-      rg.el.setAttribute('r', r.toFixed(3)); rg.el.setAttribute('opacity', (.8 * (1 - d)).toFixed(3));
-      rg.el.setAttribute('stroke-width', ((1 + 3 * (1 - d)) / hero.R).toFixed(5));
-      rg.on = true;
-    } else if (rg.on) { rg.on = false; rg.el.setAttribute('opacity', 0); }
-  }
-  if (heroIntroDone) {
-    HG.nodes.forEach((n, i) => {
-      let fl = 0; for (const rg of rings) { const dd = n.r - rg.r; fl = Math.max(fl, rg.a * Math.exp(-dd * dd / .006)); }
-      const o = f1((.45 + .55 * fl) * 100) / 100;
-      const el = hero.nodes[i]; if (el._o !== o) { el._o = o; el.setAttribute('opacity', o); }
-    });
-  }
-  if (!RM) { const sc = 1 + .035 * FX.low; hg.style.transform = `scale(${sc.toFixed(4)})`; }
-}
-
-/* =====================================================================
-   JOURNEY: four small worlds. The star walks one continuous path,
-   right to left (the way Persian is written); the camera follows it.
-   ===================================================================== */
-const CH = [
-  { fa: 'مهر', en: 'Mehr', numFa: 'منزل یکم', numEn: 'Chapter one',
-    lineFa: 'صبح زود در کویر. ستاره به زمین می‌آید و خورشید با دوازده پرش بالا می‌آید.',
-    lineEn: 'Dawn in the desert. The star comes down, and the sun rises with its twelve petals.' },
-  { fa: 'سی‌وسه‌پل', en: 'Si-o-se-pol', numFa: 'منزل دوم', numEn: 'Chapter two',
-    lineFa: 'ستاره از روی پل رد می‌شود و سی‌وسه طاق، یکی‌یکی روشن می‌شوند.',
-    lineEn: 'The star walks across the bridge, and its 33 arches light up one by one.' },
-  { fa: 'جنگل', en: 'Jangal', numFa: 'منزل سوم', numEn: 'Chapter three',
-    lineFa: 'شب در جنگل. شب‌تاب‌ها دور ستاره جمع می‌شوند و با هم نقشه را می‌کشند.',
-    lineEn: 'Night in the forest. Fireflies gather round the star and draw the map together.' },
-  { fa: 'لنج', en: 'Lenj', numFa: 'منزل چهارم', numEn: 'Chapter four',
-    lineFa: 'شب روی دریا. لنج راهش را می‌جوید و ستاره بالای دکل، قطب‌نمای او می‌شود.',
-    lineEn: 'Night at sea. The dhow looks for its way, and the star becomes its compass.' },
-];
-const stage = $('#stage'), scn = $('#scn');
-const J = { W: 0, H: 0, worlds: [], pT: 0, pS: 0, cur: -1, built: false, ctx: null, lastP: -1 };
-
-function mkTrail(pts) { const cum = [0]; for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1])); return { pts, cum, L: cum[cum.length - 1] || 1 }; }
-function trailAt(tr, s) {
-  const d = clamp(s) * tr.L, c = tr.cum; let i = 1;
-  while (i < c.length - 1 && c[i] < d) i++;
-  const k = (d - c[i - 1]) / Math.max(1e-6, c[i] - c[i - 1]), a = tr.pts[i - 1], b = tr.pts[i];
-  return [lerp(a[0], b[0], k), lerp(a[1], b[1], k)];
-}
-const dPts = (pts) => 'M' + pts.map((p) => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('L');
-function bez(a, b, c, d, n) { const o = []; for (let i = 0; i <= n; i++) { const t = i / n, u = 1 - t; o.push([u * u * u * a[0] + 3 * u * u * t * b[0] + 3 * u * t * t * c[0] + t * t * t * d[0], u * u * u * a[1] + 3 * u * u * t * b[1] + 3 * u * t * t * c[1] + t * t * t * d[1]]); } return o; }
-const trailSvg = (tr) => `<path class="trail-g" opacity=".16" d="${dPts(tr.pts)}" stroke-dasharray="${tr.L.toFixed(1)}" stroke-dashoffset="${tr.L.toFixed(1)}"/><path class="trail" d="${dPts(tr.pts)}" stroke-dasharray="${tr.L.toFixed(1)}" stroke-dashoffset="${tr.L.toFixed(1)}"/>`;
-function hexMix(a, b, k) { const pa = [1, 3, 5].map((i) => parseInt(a.substr(i, 2), 16)), pb = [1, 3, 5].map((i) => parseInt(b.substr(i, 2), 16)); return `rgb(${pa.map((v, i) => Math.round(lerp(v, pb[i], k))).join(',')})`; }
-function setA(el, name, v) { if (el['_' + name] !== v) { el['_' + name] = v; el.setAttribute(name, v); } }
-
-function focalBox(W, H, rtl) {
-  const wide = W >= 900 && W / H > 1.1;
-  if (wide) return rtl ? { x: W * .05, y: H * .12, w: W * .52, h: H * .76 } : { x: W * .43, y: H * .12, w: W * .52, h: H * .76 };
-  return { x: 16, y: H * .09, w: W - 32, h: H * .45 };
-}
-
-/* ----- chapter 1: Mehr, the desert at sunrise ----- */
-function worldMehr(c) {
-  const { W, H, X, Y, M } = c;
-  const f0 = 2 * Math.PI / (W * 1.1);
-  const dune = (base, amp, f, ph) => { const pts = []; for (let i = 0; i <= 64; i++) { const x = -20 + (W + 40) * i / 64; pts.push([x, base + amp * Math.sin(x * f + ph) + amp * .45 * Math.sin(x * f * 2.3 + ph * 1.7)]); } return pts; };
-  const far = dune(Y(.80), M * .05, f0 * 1.3, 1.2), mid = dune(Y(.87), M * .06, f0, .4), near = dune(Y(1.0), M * .07, f0 * .8, 2.1);
-  const fill = (pts) => dPts(pts) + `L${W + 20} ${H + 20}L-20 ${H + 20}Z`;
-  const crest = (x) => { for (let i = 1; i < mid.length; i++) if (mid[i][0] >= x) { const a = mid[i - 1], b = mid[i], k = (x - a[0]) / (b[0] - a[0]); return lerp(a[1], b[1], k); } return mid[mid.length - 1][1]; };
-  const lift = M * .016;
-  const p3 = [X(.66), crest(X(.66)) - lift];
-  const a = bez([X(.88), Y(.02)], [X(.87), Y(.36)], [X(.76), Y(.70)], p3, 44);
-  for (let i = 1; i <= 54; i++) { const u = .66 - .61 * i / 54, x = X(u); a.push([x, crest(x) - lift]); }
-  const tr = mkTrail(a);
-  const sunX = X(.40), Rs = M * .17, SG = girih(12, { r0: .3, r1: .6, r2: .86, d: .34 });
-  const sunLines = SG.segs.map((sg) => `<path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="${segD(sg, 0, 0, Rs)}"/>`).join('');
-  const html = `<g class="w" id="w0" opacity="0">
-    <defs><linearGradient id="lgDawn" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="${Y(.88).toFixed(0)}"><stop id="d0" offset="0" stop-color="#070b22" stop-opacity=".25"/><stop id="d1" offset=".62" stop-color="#2a1a44" stop-opacity=".35"/><stop id="d2" offset="1" stop-color="#3a2050" stop-opacity=".5"/></linearGradient>
-    <radialGradient id="rgSun"><stop offset="0" stop-color="#ffe2a0" stop-opacity=".85"/><stop offset=".3" stop-color="#f4b45a" stop-opacity=".32"/><stop offset="1" stop-color="#f4b45a" stop-opacity="0"/></radialGradient></defs>
-    <rect x="0" y="0" width="${W}" height="${Y(.9).toFixed(0)}" fill="url(#lgDawn)"/>
-    <g id="sun" transform="translate(${sunX.toFixed(1)} ${Y(1.05).toFixed(1)})">
-      <circle id="sunGlow" r="${(M * .6).toFixed(1)}" fill="url(#rgSun)" opacity=".3"/>
-      <circle r="${(M * .048).toFixed(1)}" fill="#ffe1a3"/>
-      <circle r="${(Rs * 1.12).toFixed(1)}" fill="none" stroke="#F4C35A" stroke-width=".8" opacity=".3"/>
-      <g class="gl" id="sunRos" stroke-width="1.1">${sunLines}</g>
-    </g>
-    <path d="${fill(far)}" fill="#150e2a"/><path class="crest" d="${dPts(far)}" stroke-opacity=".22"/>
-    <path d="${fill(mid)}" fill="#0e0a1f"/><path class="crest" d="${dPts(mid)}" stroke-opacity=".5"/>
-    <path d="${fill(near)}" fill="#07050f"/><path class="crest" d="${dPts(near)}" stroke-opacity=".32"/>
-    ${trailSvg(tr)}
-  </g>`;
-  return { html, tr, init(root) {
-    this.g = root.querySelector('#w0'); this.sun = root.querySelector('#sun'); this.glow = root.querySelector('#sunGlow');
-    this.lines = Array.from(root.querySelectorAll('#sunRos path')); this.stops = ['#d0', '#d1', '#d2'].map((s) => root.querySelector(s));
-    this.trs = Array.from(this.g.querySelectorAll('.trail,.trail-g'));
-  }, update(q, t) {
-    const v = lerp(1.05, .40, easeOut(clamp(q / .85)));
-    setA(this.sun, 'transform', `translate(${sunX.toFixed(1)} ${Y(v).toFixed(1)})`);
-    setA(this.glow, 'opacity', (.25 + .65 * q + .1 * FX.full).toFixed(2));
-    const f = clamp((q - .08) / .62), N = this.lines.length;
-    this.lines.forEach((el, i) => { const s = i / N * .8; setA(el, 'stroke-dashoffset', (1 - clamp((f - s) / .2)).toFixed(3)); });
-    setA(this.stops[0], 'stop-color', hexMix('#070b22', '#1b1f4a', q));
-    setA(this.stops[1], 'stop-color', hexMix('#2a1a44', '#b2634e', q)); setA(this.stops[1], 'stop-opacity', (.3 + .35 * q).toFixed(2));
-    setA(this.stops[2], 'stop-color', hexMix('#3a2050', '#f2a85c', q)); setA(this.stops[2], 'stop-opacity', (.45 + .45 * q).toFixed(2));
-  }, starS(q) { return q; } };
-}
-
-/* ----- chapter 2: Si-o-se-pol, the bridge of 33 arches ----- */
-function worldBridge(c) {
-  const { W, H, X, Y, M } = c;
-  const n = 33, uR = .98, uL = .02, bay = c.F.w * (uR - uL) / n;
-  const deck = Y(.50), g1 = Y(.513), g2 = Y(.556), spring = Y(.64), apex = Y(.592), water = Y(.72);
-  const xs = [X(uL), X(uR)], xa = Math.min(...xs) - bay * .35, xb = Math.max(...xs) + bay * .35;
-  const uk = (k) => uR - (k + .5) * (uR - uL) / n;
-  const arch = (cx, w, top, spr, base) => { const h = spr - top, l = cx - w / 2, r = cx + w / 2; return `M${f1(l)} ${f1(base)}V${f1(spr)}C${f1(l)} ${f1(spr - h * .55)} ${f1(cx - w * .12)} ${f1(top + h * .1)} ${f1(cx)} ${f1(top)}C${f1(cx + w * .12)} ${f1(top + h * .1)} ${f1(r)} ${f1(spr - h * .55)} ${f1(r)} ${f1(spr)}V${f1(base)}Z`; };
-  let gal = '', open = '', lit = '', refl = '';
-  for (let k = 0; k < n; k++) {
-    const cx = X(uk(k));
-    gal += `<path d="${arch(cx, bay * .44, g1, g1 + (g2 - g1) * .45, g2)}"/>`;
-    const d = arch(cx, bay * .66, apex, spring, water);
-    open += `<path d="${d}"/>`; lit += `<path d="${d}" opacity="0"/>`; refl += `<path d="${d}" opacity="0"/>`;
-  }
-  // Soffeh mountain far behind, a low ridge
-  const ridge = []; for (let i = 0; i <= 40; i++) { const x = -20 + (W + 40) * i / 40; ridge.push([x, Y(.47) - M * .05 * Math.max(0, Math.sin(i / 40 * Math.PI * 1.2 + .3)) - M * .015 * Math.sin(i * .9)]); }
-  let rips = ''; [.06, .14, .25, .38, .54, .72].forEach((f, i) => { const y = water + (H - water) * f; rips += `<line class="rip" x1="-10" y1="${f1(y)}" x2="${W + 10}" y2="${f1(y)}" stroke="#F4C35A" stroke-opacity="${(.2 - i * .02).toFixed(2)}" stroke-width="1" stroke-dasharray="${40 + i * 6} ${26 + i * 4} 8 ${30 + i * 10}" style="animation-duration:${6 + i * 1.3}s"/>`; });
-  const yS = deck - M * .016;
-  const pts = bez([X(.995), Y(.64)], [X(.99), Y(.56)], [X(.975), yS], [X(.955), yS], 12);
-  pts.push([X(.02), yS]);
-  const tr = mkTrail(pts);
-  const html = `<g class="w" id="w1" opacity="0">
-    <defs><linearGradient id="lgSky2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="${f1(water)}"><stop offset="0" stop-color="#070b22" stop-opacity="0"/><stop offset="1" stop-color="#2b1a3e" stop-opacity=".6"/></linearGradient>
-    <linearGradient id="lgWater" gradientUnits="userSpaceOnUse" x1="0" y1="${f1(water)}" x2="0" y2="${H}"><stop offset="0" stop-color="#0a0c28"/><stop offset="1" stop-color="#03040d"/></linearGradient>
-    <radialGradient id="rgArch" cx=".5" cy=".78" r=".75"><stop offset="0" stop-color="#ffdc95"/><stop offset=".55" stop-color="#eea24a" stop-opacity=".9"/><stop offset="1" stop-color="#8a4316" stop-opacity=".55"/></radialGradient></defs>
-    <rect width="${W}" height="${f1(water)}" fill="url(#lgSky2)"/>
-    <path d="${dPts(ridge)}L${W + 20} ${f1(water)}L-20 ${f1(water)}Z" fill="#0d0a22" opacity=".85"/>
-    <rect y="${f1(water)}" width="${W}" height="${f1(H - water)}" fill="url(#lgWater)"/>
-    <g id="refl" transform="translate(0 ${f1(2 * water)}) scale(1 -1)" fill="url(#rgArch)" opacity=".42">${refl}</g>
-    ${rips}
-    <rect x="-10" y="${f1(Y(.69))}" width="${f1(xa + 10)}" height="${f1(water - Y(.69))}" fill="#0a0818"/>
-    <rect x="${f1(xb)}" y="${f1(Y(.69))}" width="${f1(W - xb + 10)}" height="${f1(water - Y(.69))}" fill="#0a0818"/>
-    <rect x="${f1(xa)}" y="${f1(deck)}" width="${f1(xb - xa)}" height="${f1(water - deck)}" fill="#120d27"/>
-    <g fill="#06050f" stroke="#F4C35A" stroke-opacity=".22" stroke-width=".6">${gal}</g>
-    <g fill="#040309" stroke="#F4C35A" stroke-opacity=".16" stroke-width=".6">${open}</g>
-    <g id="lit" fill="url(#rgArch)">${lit}</g>
-    <path d="M${f1(xa)} ${f1(deck)}H${f1(xb)}" stroke="#F4C35A" stroke-opacity=".6" stroke-width="1"/>
-    <path d="M${f1(xa)} ${f1(water)}H${f1(xb)}" stroke="#F4C35A" stroke-opacity=".25" stroke-width="1"/>
-    ${trailSvg(tr)}
-  </g>`;
-  return { html, tr, init(root) {
-    this.g = root.querySelector('#w1'); this.lit = Array.from(root.querySelectorAll('#lit path')); this.refl = Array.from(root.querySelectorAll('#refl path'));
-    this.trs = Array.from(this.g.querySelectorAll('.trail,.trail-g'));
-  }, update(q) {
-    const pt = trailAt(tr, q), us = c.rtl ? (pt[0] - c.F.x) / c.F.w : 1 - (pt[0] - c.F.x) / c.F.w;
-    let count = 0;
-    for (let k = 0; k < n; k++) {
-      const a = clamp((uk(k) + .5 / n - us) / (1 / n));
-      if (a > .5) count++;
-      const o = (a * (.82 + .18 * FX.full)).toFixed(2);
-      setA(this.lit[k], 'opacity', o); setA(this.refl[k], 'opacity', o);
-    }
-    this.count = count;
-  }, starS(q) { return q; }, extra() { return LANG === 'fa' ? `${faD(this.count || 0)} طاق از ${faD(33)} طاق روشن شد` : `${this.count || 0} of 33 arches lit`; } };
-}
-
-/* ----- chapter 3: Jangal, fireflies draw the girih ----- */
-function worldForest(c) {
-  const { W, H, X, Y, M } = c;
-  const C = [X(.45), Y(.42)], R = M * .31, G = girih(10, { r0: .28, r1: .55, r2: .84, d: .42 });
-  reseed(321);
-  let far = '', near = '';
-  for (let i = 0; i < 16; i++) { const x = (i + rnd() * .8) / 16 * (W + 40) - 20, w = W * (.006 + rnd() * .01) + 3, lean = (rnd() - .5) * w * 2; far += `<path d="M${f1(x - w / 2)} -10L${f1(x + w / 2)} -10L${f1(x + w * .7 + lean)} ${H + 10}L${f1(x - w * .7 + lean)} ${H + 10}Z"/>`; }
-  let placed = 0, tries = 0;
-  while (placed < 7 && tries < 80) { tries++; const x = rnd() * W, w = Math.max(10, W * (.025 + rnd() * .03)); if (Math.abs(x - C[0]) < R * 1.25 + w) continue; const lean = (rnd() - .5) * w * 1.2; near += `<path d="M${f1(x - w / 2)} -10L${f1(x + w / 2)} -10L${f1(x + w * .65 + lean)} ${H + 10}L${f1(x - w * .65 + lean)} ${H + 10}Z"/>`; placed++; }
-  const targets = G.nodes.map((nd) => [nd.x, nd.y]);
-  G.segs.forEach((sg, i) => { if (i % 2 === 0) targets.push([(sg[0][0] + sg[1][0]) / 2, (sg[0][1] + sg[1][1]) / 2]); });
-  const flies = targets.map((tp) => ({ tx: C[0] + tp[0] * R, ty: C[1] + tp[1] * R, hx: c.F.x + rnd() * c.F.w, hy: c.F.y + rnd() * c.F.h * .95, ax: rnd() * 6.28, ay: rnd() * 6.28, sx: .3 + rnd() * .5, sy: .25 + rnd() * .45, ph: rnd() * 6.28, w: 1.4 + rnd() * 2 }));
-  let fl = ''; flies.forEach(() => { fl += `<g><circle r="9" fill="url(#rgFly)"/><circle r="1.7" fill="#f6ffb8"/></g>`; });
-  const lines = G.segs.map((sg) => `<path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="${segD(sg, C[0], C[1], R)}"/>`).join('');
-  const a = []; for (let i = 0; i <= 40; i++) { const k = i / 40; a.push([X(lerp(.95, .45, k)), Y(lerp(.52, .42, k) + .07 * Math.sin(k * Math.PI * 2.5) * (1 - k))]); }
-  a[a.length - 1] = [C[0], C[1]];
-  const lenA = mkTrail(a).L;
-  for (let i = 1; i <= 24; i++) { const k = i / 24; a.push([X(lerp(.45, .04, k)), Y(lerp(.42, .56, k) + .05 * Math.sin(k * Math.PI))]); }
-  const tr = mkTrail(a), sA = lenA / tr.L;
-  const html = `<g class="w" id="w2" opacity="0">
-    <defs><linearGradient id="lgForest" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#03120e" stop-opacity=".15"/><stop offset="1" stop-color="#020a08" stop-opacity=".85"/></linearGradient>
-    <radialGradient id="rgFly"><stop offset="0" stop-color="#f1ff9a" stop-opacity=".75"/><stop offset="1" stop-color="#cfe86a" stop-opacity="0"/></radialGradient>
-    <linearGradient id="lgFog" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe7d8" stop-opacity="0"/><stop offset=".5" stop-color="#cfe7d8" stop-opacity=".07"/><stop offset="1" stop-color="#cfe7d8" stop-opacity="0"/></linearGradient></defs>
-    <rect width="${W}" height="${H}" fill="url(#lgForest)"/>
-    <g fill="#0b231d" opacity=".75">${far}</g>
-    <rect class="fog" x="${-W * .1}" y="${f1(Y(.55))}" width="${W * 1.2}" height="${f1(M * .35)}" fill="url(#lgFog)"/>
-    <g class="gl" id="fgir" stroke-width="1" stroke-opacity=".75">${lines}</g>
-    ${trailSvg(tr)}
-    <g id="flies">${fl}</g>
-    <rect class="fog" x="${-W * .1}" y="${f1(Y(.8))}" width="${W * 1.2}" height="${f1(M * .4)}" fill="url(#lgFog)" style="animation-duration:34s"/>
-    <g fill="#020604">${near}</g>
-  </g>`;
-  return { html, tr, init(root) {
-    this.g = root.querySelector('#w2'); this.fl = Array.from(root.querySelectorAll('#flies > g')); this.lines = Array.from(root.querySelectorAll('#fgir path'));
-    this.trs = Array.from(this.g.querySelectorAll('.trail,.trail-g'));
-  }, update(q, t) {
-    const tt = RM ? 0 : t;
-    const form = ease(clamp((q - .18) / .42));
-    const sync = A.playing ? .35 + .65 * FX.kick : .5 + .5 * Math.sin(tt * 2.1);
-    flies.forEach((f, i) => {
-      const wx = f.hx + Math.sin(tt * f.sx + f.ax) * M * .05, wy = f.hy + Math.sin(tt * f.sy + f.ay) * M * .04;
-      const hv = Math.sin(tt * 1.3 + f.ph) * M * .004;
-      const x = lerp(wx, f.tx + hv, form), y = lerp(wy, f.ty - hv, form);
-      const own = .5 + .5 * Math.sin(tt * f.w + f.ph);
-      const o = clamp(lerp(own, sync, form) * .85 + .15);
-      const el = this.fl[i];
-      setA(el, 'transform', `translate(${f1(x)} ${f1(y)})`); setA(el, 'opacity', o.toFixed(2));
-    });
-    const lf = clamp((q - .55) / .28), N = this.lines.length;
-    this.lines.forEach((el, i) => { const s = i / N * .7; setA(el, 'stroke-dashoffset', (1 - clamp((lf - s) / .3)).toFixed(3)); });
-  }, starS(q) { return q < .5 ? sA * ease(q / .5) : q < .84 ? sA : lerp(sA, 1, ease((q - .84) / .16)); } };
-}
-
-/* ----- chapter 4: Lenj, the dhow and the star compass ----- */
-function worldSea(c) {
-  const { W, H, X, Y, M, rtl } = c;
-  const hz = Y(.62);
-  const layers = [
-    { b: Y(.645), a: M * .007, k: 2 * Math.PI / (W * .24), w: .5, fill: '#071431', so: .14 },
-    { b: Y(.71), a: M * .013, k: 2 * Math.PI / (W * .34), w: .72, fill: '#06102a', so: .26 },
-    { b: Y(.80), a: M * .02, k: 2 * Math.PI / (W * .46), w: .9, fill: '#040b20', so: .36 },
-    { b: Y(.93), a: M * .028, k: 2 * Math.PI / (W * .62), w: 1.1, fill: '#020615', so: .46 },
-  ];
-  const wy = (L, x, t) => L.b + L.a * Math.sin(x * L.k + t * L.w) + L.a * .35 * Math.sin(x * L.k * 2.1 - t * L.w * 1.3 + 1.1);
-  const wpts = (L, t) => { const o = []; for (let i = 0; i <= 36; i++) { const x = -20 + (W + 40) * i / 36; o.push([x, wy(L, x, t)]); } return o; };
-  const Ld = M * .44, bx = X(.5), sgn = rtl ? 1 : -1;
-  const hull = 'M-.5 -.075C-.4 .0 -.27 .065 -.06 .07L.33 .07C.41 .06 .45 .0 .47 -.13L.40 -.13L.385 -.05L-.30 -.05C-.38 -.05 -.44 -.055 -.5 -.075Z';
-  const sail = 'M-.37 -.17L.21 -.70L.07 -.085Z';
-  const mastTop = [.02, -.60];
-  const Cc = [X(.5), Y(.16)], Rc = M * .2, CG = girih(8, { r0: .34, r1: .62, r2: .9, d: .30 });
-  let ticks = ''; for (let i = 0; i < 32; i++) { const a = i / 32 * Math.PI * 2, r1 = i % 4 === 0 ? .80 : .88; ticks += `<path d="M${f1(Math.cos(a) * r1 * Rc)} ${f1(Math.sin(a) * r1 * Rc)}L${f1(Math.cos(a) * .96 * Rc)} ${f1(Math.sin(a) * .96 * Rc)}"/>`; }
-  let spikes = ''; for (let i = 0; i < 4; i++) { const a = i * Math.PI / 2 - Math.PI / 2, b1 = a - .14, b2 = a + .14; spikes += `<path d="M${f1(Math.cos(a) * Rc * 1.02)} ${f1(Math.sin(a) * Rc * 1.02)}L${f1(Math.cos(b1) * Rc * .3)} ${f1(Math.sin(b1) * Rc * .3)}L0 0L${f1(Math.cos(b2) * Rc * .3)} ${f1(Math.sin(b2) * Rc * .3)}Z"/>`; }
-  const clines = CG.segs.map((sg) => `<path pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="${segD(sg, 0, 0, Rc * .62)}"/>`).join('');
-  const mastY0 = wy(layers[1], bx, 0) + mastTop[1] * Ld, mastX0 = bx + sgn * mastTop[0] * Ld;
-  const a = bez([X(.95), Y(.36)], [X(.86), Y(.30)], [X(.66), mastY0 - M * .12], [mastX0, mastY0], 30);
-  const lenA = mkTrail(a).L;
-  for (let i = 1; i <= 20; i++) a.push([lerp(mastX0, Cc[0], i / 20), lerp(mastY0, Cc[1], easeOut(i / 20))]);
-  const tr = mkTrail(a), sA = lenA / tr.L;
-  let wv = ''; layers.forEach((L, i) => { wv += `<path class="wf" fill="${L.fill}"/><path class="wc crest" stroke-opacity="${L.so}"/>`; if (i === 1) wv += '%%DHOW%%'; });
-  let html = `<g class="w" id="w3" opacity="0">
-    <defs><linearGradient id="lgSea" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="${f1(hz)}"><stop offset="0" stop-color="#050d2a" stop-opacity=".2"/><stop offset="1" stop-color="#0f4258" stop-opacity=".55"/></linearGradient>
-    <radialGradient id="rgComp"><stop offset="0" stop-color="#ffe2a0" stop-opacity=".5"/><stop offset="1" stop-color="#f4c35a" stop-opacity="0"/></radialGradient>
-    <radialGradient id="rgLan"><stop offset="0" stop-color="#ffd88a" stop-opacity=".9"/><stop offset="1" stop-color="#ffb050" stop-opacity="0"/></radialGradient></defs>
-    <rect width="${W}" height="${f1(hz)}" fill="url(#lgSea)"/>
-    <g id="comp" transform="translate(${f1(Cc[0])} ${f1(Cc[1])})" opacity="0">
-      <circle id="compGlow" r="${f1(Rc * 1.9)}" fill="url(#rgComp)" opacity="0"/>
-      <circle r="${f1(Rc)}" fill="none" stroke="#F4C35A" stroke-opacity=".55" stroke-width="1"/>
-      <circle r="${f1(Rc * .76)}" fill="none" stroke="#F4C35A" stroke-opacity=".25" stroke-width=".8"/>
-      <g id="compRot">
-        <g stroke="#F4C35A" stroke-opacity=".5" stroke-width=".8">${ticks}</g>
-        <g fill="#F4C35A" fill-opacity=".14" stroke="#F4C35A" stroke-opacity=".7" stroke-width=".8">${spikes}</g>
-        <g class="gl" id="cgir" stroke-width="1">${clines}</g>
-      </g>
-    </g>
-    ${trailSvg(tr)}
-    ${wv}
-  </g>`;
-  const dhowSvg = `<g id="dhow"><g transform="scale(${f1(sgn * Ld)} ${f1(Ld)})">
-      <circle cx=".40" cy="-.17" r=".09" fill="url(#rgLan)" id="lan"/>
-      <path d="${sail}" fill="#0b1130" stroke="#F4C35A" stroke-opacity=".6" stroke-width="${(1 / Ld).toFixed(4)}"/>
-      <path d="M-.39 -.16L.24 -.73" stroke="#F4C35A" stroke-opacity=".7" stroke-width="${(1.2 / Ld).toFixed(4)}"/>
-      <path d="M.0 -.05L.03 -.62" stroke="#F4C35A" stroke-opacity=".8" stroke-width="${(1.3 / Ld).toFixed(4)}"/>
-      <path d="${hull}" fill="#05060f" stroke="#F4C35A" stroke-opacity=".7" stroke-width="${(1 / Ld).toFixed(4)}"/>
-      <circle cx=".40" cy="-.17" r=".012" fill="#ffe3a6"/>
-    </g></g>`;
-  html = html.replace('%%DHOW%%', dhowSvg);
-  return { html, tr, init(root) {
-    this.g = root.querySelector('#w3');
-    this.wf = Array.from(this.g.querySelectorAll('.wf')); this.wc = Array.from(this.g.querySelectorAll('.wc'));
-    this.dhow = root.querySelector('#dhow'); this.lan = root.querySelector('#lan');
-    this.comp = root.querySelector('#comp'); this.rot = root.querySelector('#compRot'); this.cglow = root.querySelector('#compGlow');
-    this.cl = Array.from(root.querySelectorAll('#cgir path')); this.trs = Array.from(this.g.querySelectorAll('.trail,.trail-g'));
-    this.update(0, 0);
-  }, update(q, t) {
-    const tt = RM ? 0 : t;
-    layers.forEach((L, i) => { const p = wpts(L, tt), d = dPts(p); this.wf[i].setAttribute('d', d + `L${W + 20} ${H + 20}L-20 ${H + 20}Z`); this.wc[i].setAttribute('d', d); });
-    const y = wy(layers[1], bx, tt), dy = (wy(layers[1], bx + 6, tt) - wy(layers[1], bx - 6, tt)) / 12, ang = Math.atan(dy) * 180 / Math.PI * .8;
-    this.dhow.setAttribute('transform', `translate(${f1(bx)} ${f1(y)}) rotate(${ang.toFixed(2)})`);
-    const ar = ang * Math.PI / 180, mx = sgn * mastTop[0] * Ld, my = mastTop[1] * Ld;
-    this.mast = [bx + mx * Math.cos(ar) - my * Math.sin(ar), y + mx * Math.sin(ar) + my * Math.cos(ar)];
-    setA(this.lan, 'opacity', (.55 + .45 * (A.playing ? FX.kick : .5 + .5 * Math.sin(tt * 1.6))).toFixed(2));
-    setA(this.comp, 'opacity', clamp((q - .18) / .3).toFixed(2));
-    const settle = ease(clamp((q - .2) / .7)), wob = RM ? 0 : Math.sin(tt * 1.4) * 4 * (1 - settle);
-    setA(this.rot, 'transform', `rotate(${((1 - settle) * 62 + wob).toFixed(2)})`);
-    const lf = clamp((q - .25) / .5), N = this.cl.length;
-    this.cl.forEach((el, i) => { const s = i / N * .7; setA(el, 'stroke-dashoffset', (1 - clamp((lf - s) / .3)).toFixed(3)); });
-    setA(this.cglow, 'opacity', (clamp((q - .8) / .2) * (.75 + .25 * FX.full)).toFixed(2));
-  }, starS(q) { return q < .4 ? sA * ease(q / .4) : q < .52 ? sA : lerp(sA, 1, ease((q - .52) / .33)); },
-  starAt(q) {
-    const p = trailAt(tr, this.starS(q));
-    if (this.mast && q > .3 && q < .62) { const k = q < .4 ? (q - .3) / .1 : q > .52 ? 1 - (q - .52) / .1 : 1; return [lerp(p[0], this.mast[0], sstep(k)), lerp(p[1], this.mast[1], sstep(k))]; }
-    return p;
-  }, extra() { return this.q > .9 ? (LANG === 'fa' ? 'سفر ادامه دارد. منزل بعدی در راه است.' : 'The journey goes on. The next stop is on its way.') : ''; } };
-}
-
-function buildJourney() {
-  const W = stage.clientWidth, H = stage.clientHeight; if (!W || !H) return;
-  const rtl = LANG === 'fa';
-  const F = focalBox(W, H, rtl);
-  const X = (u) => F.x + (rtl ? u : 1 - u) * F.w, Y = (v) => F.y + v * F.h, M = Math.min(F.w, F.h);
-  const c = { W, H, F, X, Y, M, rtl };
-  J.W = W; J.H = H; J.ctx = c;
-  scn.setAttribute('viewBox', `0 0 ${W} ${H}`);
-  const ws = [worldMehr(c), worldBridge(c), worldForest(c), worldSea(c)];
-  scn.innerHTML = ws.map((w) => w.html).join('');
-  ws.forEach((w) => { w.init(scn); w.op = -1; w.tx = null; });
-  J.worlds = ws; J.built = true; J.lastP = -1; J.cur = -1;
-}
-const TW = .045;
-function chQ(ch, p) { const a = ch / 4 + (ch > 0 ? TW : 0), len = .25 - (ch > 0 ? TW : 0) - (ch < 3 ? TW : 0); return clamp((p - a) / len); }
-function starAtCh(w, q) { return w.starAt ? w.starAt(q) : trailAt(w.tr, w.starS(q)); }
-function journeyFrame(t, force) {
-  if (!J.built) return null;
-  const p = J.pS;
-  let trans = -1, k = 0;
-  for (let b = 1; b <= 3; b++) { const pb = b / 4; if (p > pb - TW && p < pb + TW) { trans = b - 1; k = sstep((p - (pb - TW)) / (2 * TW)); } }
-  const base = Math.min(3, Math.floor(p * 4));
-  const ws = J.worlds;
-  let star, shift = 0;
-  ws.forEach((w, i) => { w.q = chQ(i, p); });
-  if (trans >= 0) {
-    const w0 = ws[trans], w1 = ws[trans + 1];
-    const E = starAtCh(w0, 1), S = starAtCh(w1, 0);
-    shift = RM ? 0 : S[0] - E[0];
-    star = [lerp(E[0], S[0], k), lerp(E[1], S[1], k) - Math.sin(k * Math.PI) * J.ctx.M * .07];
-  }
-  ws.forEach((w, i) => {
-    let op = 0, tx = 0;
-    if (trans >= 0) { if (i === trans) { op = 1 - k; tx = shift * k; } else if (i === trans + 1) { op = k; tx = shift * (k - 1); } }
-    else if (i === base) op = 1;
-    const ov = op.toFixed(3);
-    if (w.op !== ov) { w.op = ov; w.g.setAttribute('opacity', ov); w.g.style.display = op > 0 ? '' : 'none'; }
-    const tv = `translate(${f1(tx)} 0)`;
-    if (w.tx !== tv) { w.tx = tv; w.g.setAttribute('transform', tv); }
-    if (op > 0) {
-      w.update(w.q, t);
-      const s = w.starS(w.q), off = (w.tr.L * (1 - s)).toFixed(1);
-      w.trs.forEach((el) => setA(el, 'stroke-dashoffset', off));
-      if (w.trs[0]) setA(w.trs[0], 'opacity', (.12 + .3 * FX.full).toFixed(2));
-    }
-  });
-  if (!star) star = starAtCh(ws[base], ws[base].q);
-  if (trans >= 0) { star = [star[0] + 0, star[1]]; }
-  const active = trans >= 0 ? (k < .5 ? trans : trans + 1) : base;
-  setChapter(active);
-  const ex = J.worlds[active].extra ? J.worlds[active].extra() : '';
-  if (chExtra._t !== ex) { chExtra._t = ex; chExtra.textContent = ex; }
-  jfill.style.transform = `scaleX(${clamp(p).toFixed(3)})`;
-  dots.forEach((d, i) => d.classList.toggle('on', i <= active));
-  return star;
-}
-const chNum = $('#chNum'), chTitle = $('#chTitle'), chLat = $('#chLat'), chLine = $('#chLine'), chExtra = $('#chExtra'), chBox = $('#ch'), jfill = $('#jfill'), dots = $$('#jmap i');
-function fillChapter(i) {
-  const d = CH[i];
-  chNum.textContent = LANG === 'fa' ? d.numFa : d.numEn;
-  chTitle.textContent = LANG === 'fa' ? d.fa : d.en;
-  chLat.textContent = d.en; chLat.style.display = LANG === 'fa' ? '' : 'none';
-  chLine.textContent = LANG === 'fa' ? d.lineFa : d.lineEn;
-  $('#chListenLbl').textContent = LANG === 'fa' ? 'بشنو' : 'Listen';
-}
-function setChapter(i) {
-  if (J.cur === i) return;
-  J.cur = i; fillChapter(i);
-  if (HAS_GSAP && !RM) gsap.fromTo(chBox, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .7, ease: 'power2.out', overwrite: true });
-}
-
-/* =====================================================================
-   THE TRAVELLER: one star, from the logo, through the four worlds,
-   into the story ornament. Its place is a pure function of scroll.
-   ===================================================================== */
-const trav = $('#trav'), travHalo = $('#travHalo');
-const orn = $('#orn');
-let travShown = RM || !HAS_GSAP;
-function travFrame(t, jStar) {
-  const vh = innerHeight;
-  const h = heroAnchor();
-  const jr = $('#journey').getBoundingClientRect(), sr = stage.getBoundingClientRect();
-  const e = clamp((vh - jr.top) / vh);              // 0: journey below the fold, 1: stage reached the top
-  const x = clamp((vh - jr.bottom) / (vh * .85));   // 0: inside the journey, 1: left it behind
-  let px, py, r;
-  const rJ = Math.max(9, Math.min(16, J.ctx ? J.ctx.M * .045 : 12));
-  const js = jStar || (J.built ? starAtCh(J.worlds[0], 0) : [innerWidth / 2, vh / 2]);
-  const jx = js[0] + sr.left, jy = js[1] + sr.top;
-  if (e < 1) {
-    const k = ease(e);
-    px = lerp(h.x, jx, k) + Math.sin(k * Math.PI) * innerWidth * .08 * (LANG === 'fa' ? 1 : -1);
-    py = lerp(h.y, jy, k);
-    r = lerp(h.r, rJ, k);
-    if (!RM && A.playing === false) { px += Math.sin(t * .7) * 2.2 * (1 - k); py += Math.cos(t * .9) * 1.8 * (1 - k); }
-  } else if (x <= 0) { px = jx; py = jy; r = rJ; }
-  else {
-    const o = orn.getBoundingClientRect(), k = ease(x);
-    px = lerp(jx, o.left + o.width / 2, k); py = lerp(jy, o.top + o.height / 2, k);
-    r = lerp(rJ, o.width * .07, k);
-  }
-  const pulse = RM ? 1 : 1 + .32 * FX.kick;
-  const s = (r / 40) * pulse;
-  trav.style.transform = `translate3d(${px.toFixed(1)}px, ${py.toFixed(1)}px, 0) scale(${s.toFixed(4)})`;
-  travHalo.style.opacity = (.5 + .5 * FX.full + (RM ? 0 : .15 * Math.sin(t * 1.4) * (A.playing ? 0 : 1))).toFixed(2);
-  if (travShown) { const gv = clamp(e * 2.2) * .55; if (ghost._o !== gv) { ghost._o = gv; ghost.style.opacity = gv; } }
-}
-
-/* =====================================================================
-   PLAYER: the seal (the song draws its own girih as it plays) and a
-   frieze of eight star tiles, one per band of the music.
-   ===================================================================== */
-const player = $('#player'), seal = $('#seal'), frz = $('#frz'), fc = frz.getContext('2d');
-(function buildSeal() {
-  let h = `<circle r="1.1" fill="none" stroke="rgba(244,195,90,.3)" stroke-width=".035"/>`;
-  h += HG.segs.map((sg) => `<path class="s0" d="${segD(sg)}"/>`).join('');
-  h += HG.segs.map((sg) => `<path class="s1" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="${segD(sg)}"/>`).join('');
-  h += `<path d="${STAR_D}" transform="scale(.2)" fill="#F4C35A"/>`;
-  seal.innerHTML = h;
-})();
-const sealLines = $$('.s1', seal);
-let FZW = 0, FZH = 0;
-function sizeFrieze() { const r = frz.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); FZW = r.width; FZH = r.height; frz.width = Math.max(1, Math.round(r.width * d)); frz.height = Math.max(1, Math.round(r.height * d)); fc.setTransform(d, 0, 0, d, 0, 0); }
-function drawFrieze() {
-  const w = FZW, h = FZH; if (!w) return;
-  fc.clearRect(0, 0, w, h);
-  const n = Math.max(4, Math.min(8, Math.floor(w / 26))), cy = h / 2, step = w / n;
-  fc.strokeStyle = 'rgba(244,195,90,.18)'; fc.lineWidth = 1; fc.beginPath(); fc.moveTo(0, cy); fc.lineTo(w, cy); fc.stroke();
-  for (let i = 0; i < n; i++) {
-    const b = A.playing ? FX.b8[Math.floor(i * 8 / n)] : .12, cx = (LANG === 'fa' ? n - 1 - i : i) * step + step / 2;
-    const s = h * (.22 + .2 * b), a = .28 + .72 * b;
-    fc.strokeStyle = `rgba(244,195,90,${a.toFixed(3)})`; fc.lineWidth = 1 + b * .6;
-    fc.beginPath();
-    for (let j = 0; j < 2; j++) { const rot = j * Math.PI / 4; for (let v = 0; v <= 4; v++) { const an = rot + v * Math.PI / 2, xx = cx + Math.cos(an) * s, yy = cy + Math.sin(an) * s; if (v === 0) fc.moveTo(xx, yy); else fc.lineTo(xx, yy); } }
-    fc.stroke();
-    fc.fillStyle = `rgba(255,232,180,${(.25 + .75 * b).toFixed(3)})`; fc.fillRect(cx - 1, cy - 1, 2, 2);
-  }
-}
-let lastSealFrac = -1;
-function playerFrame() {
-  const dur = A.dur || 42, ct = curTime(), frac = clamp(ct / dur);
-  if (Math.abs(frac - lastSealFrac) > .001) {
-    lastSealFrac = frac;
-    const N = sealLines.length;
-    sealLines.forEach((el, i) => setA(el, 'stroke-dashoffset', (1 - clamp(frac * N - i)).toFixed(3)));
-    $('#barFill').style.width = (frac * 100).toFixed(2) + '%';
-    $('#barHead').style.left = (frac * 100).toFixed(2) + '%';
-    $('#bar').setAttribute('aria-valuenow', Math.round(frac * 100));
-  }
-  const tl = `${fmt(ct)} ${LANG === 'fa' ? 'از' : 'of'} ${fmt(dur)}`;
-  const pt = $('#pTime'); if (pt._t !== tl) { pt._t = tl; pt.textContent = tl; }
-  drawFrieze();
-}
-function uiPlay() {
-  document.body.classList.toggle('playing', A.playing);
-  if (A.playing || A.offset > 0) player.classList.add('on');
-  const lbl = $('#playLbl');
-  lbl.textContent = A.playing ? (LANG === 'fa' ? 'در حال پخش' : 'Now playing') : (LANG === 'fa' ? (A.offset > 0 && A.offset < A.dur ? 'ادامه بده' : 'بزن تا بشنوی') : (A.offset > 0 && A.offset < A.dur ? 'Resume' : 'Tap to listen'));
-  const al = A.playing ? (LANG === 'fa' ? 'مکث' : 'Pause') : (LANG === 'fa' ? 'پخش' : 'Play');
-  $('#pp').setAttribute('aria-label', al); $('#play').setAttribute('aria-label', al);
-}
-
-/* ---------- toast ---------- */
-const toastEl = $('#toast'); let toastT = 0;
-function toast(msg) { toastEl.textContent = msg; toastEl.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => toastEl.classList.remove('on'), 4200); }
-
-/* ---------- language ---------- */
-const i18n = $$('[data-en]');
-i18n.forEach((el) => { el.dataset.faHtml = el.innerHTML; });
-function setLang(l) {
-  LANG = l;
-  const html = document.documentElement;
-  html.lang = l; html.dir = l === 'fa' ? 'rtl' : 'ltr';
-  i18n.forEach((el) => { if (l === 'en') el.textContent = el.dataset.en; else el.innerHTML = el.dataset.faHtml; });
-  $$('[data-en-alt]').forEach((el) => { if (!el.dataset.faAlt) el.dataset.faAlt = el.alt; el.alt = l === 'en' ? el.dataset.enAlt : el.dataset.faAlt; });
-  const em = $('#email'); if (!em.dataset.faPh) em.dataset.faPh = em.placeholder; em.placeholder = l === 'en' ? em.dataset.enPh : em.dataset.faPh;
-  $('#lang').textContent = l === 'fa' ? 'EN' : 'فا';
-  $('#lang').setAttribute('aria-label', l === 'fa' ? 'English' : 'فارسی');
-  $('#newsNote').textContent = '';
-  buildJourney(); if (J.cur >= 0) fillChapter(J.cur);
-  layoutHero(); uiPlay(); lastSealFrac = -1;
-  if (HAS_GSAP) ScrollTrigger.refresh();
-}
-$('#lang').addEventListener('click', () => setLang(LANG === 'fa' ? 'en' : 'fa'));
-
-/* ---------- controls ---------- */
-$('#play').addEventListener('click', toggle);
-$('#pp').addEventListener('click', toggle);
-$('#chListen').addEventListener('click', () => {
-  const d = CH[Math.max(0, J.cur)];
-  if (!A.playing) play();
-  toast(LANG === 'fa' ? `در این نمونه فقط تکه‌ای از Kahkeshan پخش می‌شود. آهنگ ${d.fa} در سایت اصلی پخش می‌شود.` : `This prototype only plays a short part of Kahkeshan. ${d.en} will play on the real site.`);
-});
-const bar = $('#bar');
-bar.addEventListener('click', (ev) => { const r = bar.getBoundingClientRect(); seek((ev.clientX - r.left) / r.width); });
-bar.addEventListener('keydown', (ev) => { const f = curTime() / A.dur; if (ev.key === 'ArrowRight') seek(f + .05); if (ev.key === 'ArrowLeft') seek(f - .05); });
-$$('[data-soon]').forEach((a) => a.addEventListener('click', (ev) => { ev.preventDefault(); toast(LANG === 'fa' ? 'این لینک بعد از انتشار آهنگ‌ها فعال می‌شود.' : 'This link goes live once the songs are out.'); }));
-$('#newsForm').addEventListener('submit', (ev) => {
-  ev.preventDefault();
-  const v = $('#email').value.trim(), ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-  $('#newsNote').textContent = !ok ? (LANG === 'fa' ? 'یک ایمیل درست بنویس.' : 'Please write a valid email.') : (LANG === 'fa' ? 'این فقط نمونه است. چیزی فرستاده نشد.' : 'This is only a prototype. Nothing was sent.');
-});
-
-/* =====================================================================
-   SCROLL + INTRO (GSAP and ScrollTrigger)
-   ===================================================================== */
-function journeyProgressFallback() { const r = $('#journey').getBoundingClientRect(); return clamp(-r.top / Math.max(1, r.height - innerHeight)); }
-function setupScroll() {
-  if (!HAS_GSAP) return;
-  ScrollTrigger.create({ trigger: '#journey', start: 'top top', end: 'bottom bottom', onUpdate: (s) => { J.pT = s.progress; }, onRefresh: (s) => { J.pT = s.progress; } });
-  if (!RM) {
-    $$('.reveal').forEach((el) => gsap.from(el, { opacity: 0, y: 28, duration: 1.1, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 86%' } }));
-    gsap.to('#ornSvg .al', { strokeDashoffset: 0, ease: 'none', stagger: .02, scrollTrigger: { trigger: '#about', start: 'top 80%', end: 'center 45%', scrub: .6 } });
-  }
-}
-function buildOrnament() {
-  const G = girih(8, { r0: .32, r1: .6, r2: .88, d: .34 });
-  let h = `<circle class="hint" r="1.12"/><circle class="hint" r=".6" opacity=".5"/>`;
-  h += G.segs.map((sg) => `<path class="al" pathLength="1" stroke-width=".012" d="${segD(sg)}"/>`).join('');
-  G.nodes.forEach((n) => { h += `<path d="${STAR_D}" fill="#F4C35A" opacity=".7" transform="translate(${n.x.toFixed(3)} ${n.y.toFixed(3)}) scale(${(.03 + .02 * n.big).toFixed(3)})"/>`; });
-  $('#ornSvg').innerHTML = h;
-}
-function intro() {
-  const lines = $$('#hln path', hg), glines = $$('#hgl path', hg);
-  if (!HAS_GSAP || RM) {
-    lines.concat(glines).forEach((el) => { el.style.strokeDasharray = 'none'; el.style.strokeDashoffset = '0'; });
-    $$('.intro').forEach((el) => { el.style.opacity = 1; });
-    logoImg.style.clipPath = 'none';
-    hero.nodes.forEach((el) => el.setAttribute('opacity', .45));
-    trav.style.opacity = 1; travShown = true; heroIntroDone = true;
-    return;
-  }
-  const order = [];
-  HG.petals.forEach((_, k) => { for (let j = 0; j < 7; j++) order.push(lines[k * 7 + j]); });
-  const tl = gsap.timeline({ delay: .3 });
-  tl.fromTo(trav, { opacity: 0 }, { opacity: 1, duration: 1.2, ease: 'power2.out', onStart: () => { travShown = true; } }, 0)
-    .to(logoImg, { clipPath: 'inset(0 0 0 0%)', duration: 1.6, ease: 'power2.inOut' }, .5)
-    .to(order, { strokeDashoffset: 0, duration: .55, ease: 'power1.inOut', stagger: .022 }, .8)
-    .set(glines, { strokeDashoffset: 0 }, '>')
-    .to(hero.nodes, { attr: { opacity: .45 }, duration: .5, stagger: .02, onComplete: () => { heroIntroDone = true; } }, '-=1.0')
-    .to('.intro', { opacity: 1, y: 0, duration: .9, ease: 'power2.out', stagger: .14 }, 2.2);
-  gsap.set('.intro', { y: 12 });
-}
-
-/* ---------- loop ---------- */
-let lastT = performance.now() / 1000, lastW = innerWidth, lastH = innerHeight;
-function frame(now) {
-  requestAnimationFrame(frame);
-  const t = now / 1000, dt = Math.min(.05, Math.max(0, t - lastT)); lastT = t;
-  features(t, dt);
-  if (!RM && !A.playing && t > nextIdleShoot) { nextIdleShoot = t + 11 + Math.random() * 9; launchShoot(t); }
-  drawSky(t);
-  const hb = logoImg.getBoundingClientRect();
-  if (hb.bottom > -80) heroFrame(t);
-  const target = HAS_GSAP ? J.pT : journeyProgressFallback();
-  J.pS = RM ? target : J.pS + (target - J.pS) * Math.min(1, dt * 7.5);
-  if (Math.abs(J.pS - target) < .0004) J.pS = target;
-  const jr = $('#journey').getBoundingClientRect();
-  let star = null;
-  if (jr.top < innerHeight * 1.5 && jr.bottom > -innerHeight) star = journeyFrame(t);
-  travFrame(t, star);
-  if (player.classList.contains('on')) playerFrame();
-}
-function onResize() {
-  const w = innerWidth, h = innerHeight;
-  const big = Math.abs(w - lastW) > 2 || Math.abs(h - lastH) / lastH > .18;
-  sizeTwinkle(); layoutHero(); sizeFrieze();
-  if (big) { lastW = w; lastH = h; buildJourney(); paintMilkyWay(); if (HAS_GSAP) ScrollTrigger.refresh(); }
-}
-let rzT = 0;
-addEventListener('resize', () => { clearTimeout(rzT); rzT = setTimeout(onResize, 160); });
-document.addEventListener('visibilitychange', () => { lastT = performance.now() / 1000; });
-
-/* ---------- start ---------- */
-sizeTwinkle(); layoutHero(); buildOrnament(); buildJourney(); fillChapter(0); J.cur = 0; sizeFrieze(); uiPlay();
-setupScroll(); intro();
-requestAnimationFrame(frame);
-setTimeout(paintMilkyWay, 60);
-setTimeout(prepareAudio, 2500);
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { layoutHero(); if (HAS_GSAP) ScrollTrigger.refresh(); });
-})();
-</script>
+<script src="js/data.js?v=3"></script>
+<script src="js/worlds.js?v=3"></script>
+<script src="js/app.js?v=3"></script>
 </body>
 </html>

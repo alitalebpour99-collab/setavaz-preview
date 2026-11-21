@@ -1,0 +1,72 @@
+{
+ "kahkeshan": {
+  "bpm": 119.75,
+  "bpmFound": 119.75,
+  "start": 0,
+  "len": 48.601,
+  "drop": 16.03,
+  "fullDur": 153.4,
+  "kb": 951,
+  "kicks": 78
+ },
+ "mehr": {
+  "bpm": 119.75,
+  "bpmFound": 119.75,
+  "start": 0,
+  "len": 48.841,
+  "drop": 16.27,
+  "fullDur": 155.5,
+  "kb": 955,
+  "kicks": 61
+ },
+ "si-o-se-pol": {
+  "bpm": 120.05,
+  "bpmFound": 119.75,
+  "start": 0,
+  "len": 48.579,
+  "drop": 16.09,
+  "fullDur": 157.5,
+  "kb": 950,
+  "kicks": 56
+ },
+ "jangal": {
+  "bpm": 110.1,
+  "bpmFound": 109.7,
+  "start": 0,
+  "len": 51.016,
+  "drop": 15.59,
+  "fullDur": 154.5,
+  "kb": 998,
+  "kicks": 73
+ },
+ "lenj": {
+  "bpm": 114.85,
+  "bpmFound": 114.7,
+  "start": 0,
+  "len": 51.114,
+  "drop": 17.16,
+  "fullDur": 148.5,
+  "kb": 1000,
+  "kicks": 64
+ },
+ "bazaar": {
+  "bpm": 119.7,
+  "bpmFound": 119.7,
+  "start": 0,
+  "len": 52.118,
+  "drop": 4,
+  "fullDur": 156.2,
+  "kb": 1019,
+  "kicks": 91
+ },
+ "setareh-code": {
+  "bpm": 127.65,
+  "bpmFound": 127.65,
+  "start": 0,
+  "len": 46.686,
+  "drop": 16.13,
+  "fullDur": 174.3,
+  "kb": 913,
+  "kicks": 67
+ }
+}
