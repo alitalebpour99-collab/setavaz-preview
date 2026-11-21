@@ -73,7 +73,7 @@ function desert(c) {
   const lift = M * .016;
   const sunX = X(.40), sunY = Y(.36), Rs = M * .19;
   const land = [X(.86), yOn(mid, X(.86)) - lift];
-  const a = bez([X(.9), Y(.0)], [X(.92), Y(.36)], [X(.86), Y(.62)], land, 40);
+  const a = bez([X(.97), Y(-.04)], [X(.66), Y(.06)], [X(.98), Y(.46)], land, 40);
   const sLandL = mkTrail(a).L;
   const crestU = (u) => { const x = X(u); return [x, yOn(mid, x) - lift]; };
   for (let i = 1; i <= 80; i++) a.push(crestU(lerp(.86, .03, i / 80)));
@@ -519,14 +519,14 @@ function bazaar(c) {
     frames += `<path d="${outer}${archD(b)}" fill-rule="evenodd" fill="${hexMix('#2a160a', '#0b0603', 1 - depth)}"/>`;
     edges += `<path d="${archD(b)}" fill="none" stroke="#F4C35A" stroke-opacity="${(.15 + .35 * (1 - depth)).toFixed(2)}" stroke-width="${f2(.6 + b.s * 1.1)}"/>`;
     if (k < NB - 1) {
-      const nb = bays[k + 1], ox = lerp(b.cx, nb.cx, .5), oy = lerp(b.base - b.h * 1.02, nb.base - nb.h * 1.02, .5), ow2 = b.w * .12;
-      const fx0 = ox + (rtl ? 1 : -1) * b.w * .22, fy = lerp(b.base, nb.base, .5) - 2, fw2 = b.w * .3;
-      vaults += `<ellipse cx="${f1(ox)}" cy="${f1(oy)}" rx="${f1(ow2)}" ry="${f1(ow2 * .35)}" fill="#ffe7b0" opacity="${(.5 + .4 * (1 - depth)).toFixed(2)}"/>`;
+      const nb = bays[k + 1], ox = lerp(b.cx, nb.cx, .5), oy = lerp(b.base - b.h * 1.02, nb.base - nb.h * 1.02, .5), ow2 = b.w * .045;
+      const fx0 = ox + (rtl ? 1 : -1) * b.w * .22, fy = lerp(b.base, nb.base, .5) - 2, fw2 = b.w * .16;
+      vaults += `<ellipse cx="${f1(ox)}" cy="${f1(oy)}" rx="${f1(ow2)}" ry="${f1(ow2 * .35)}" fill="#ffe7b0" opacity="${(.28 + .3 * (1 - depth)).toFixed(2)}"/>`;
       shafts += `<path d="M${f1(ox - ow2)} ${f1(oy)}L${f1(ox + ow2)} ${f1(oy)}L${f1(fx0 + fw2)} ${f1(fy)}L${f1(fx0 - fw2)} ${f1(fy)}Z" fill="url(#${P}lgShaft)" opacity=".6"/>`;
       pools += `<ellipse cx="${f1(fx0)}" cy="${f1(fy)}" rx="${f1(fw2 * 1.1)}" ry="${f1(fw2 * .16)}" fill="#ffcf7a" opacity=".22"/>`;
     }
-    const ls = b.s, ly = b.base - b.h * .78, len = b.h * .1;
-    lamps += `<g transform="translate(${f1(b.cx)} ${f1(b.base - b.h)})"><g class="lamp"><path d="M0 0V${f1(len + b.h * .02)}" stroke="#F4C35A" stroke-opacity=".35" stroke-width="${f2(.5 + ls * .6)}"/><circle cy="${f1(len + b.h * .08)}" r="${f1(b.h * .12)}" fill="url(#${P}rgLan)"/><path d="M0 ${f1(len + b.h * .03)}l${f1(b.h * .035)} ${f1(b.h * .04)}v${f1(b.h * .035)}l${f1(-b.h * .035)} ${f1(b.h * .035)}l${f1(-b.h * .035)} ${f1(-b.h * .035)}v${f1(-b.h * .035)}Z" fill="#ffcf78" stroke="#F4C35A" stroke-width="${f2(.4 + ls * .4)}"/></g></g>`;
+    const ls = b.s, ly = b.base - b.h * .78, len = b.h * .1, lr = Math.max(2.2, b.h * .018);
+    lamps += `<g transform="translate(${f1(b.cx)} ${f1(b.base - b.h)})"><g class="lamp"><path d="M0 0V${f1(len + b.h * .02)}" stroke="#F4C35A" stroke-opacity=".35" stroke-width="${f2(.5 + ls * .6)}"/><circle cy="${f1(len + lr * 1.6)}" r="${f1(lr * 5)}" fill="url(#${P}rgLan)" opacity=".7"/><path d="M0 ${f1(len)}l${f1(lr)} ${f1(lr * .9)}v${f1(lr * 1.4)}l${f1(-lr)} ${f1(lr * .9)}l${f1(-lr)} ${f1(-lr * .9)}v${f1(-lr * 1.4)}Z" fill="#ffd88a" stroke="#F4C35A" stroke-width="${f2(.4 + ls * .4)}"/></g></g>`;
     void ly;
   }
   reseed(9); let people = '';

@@ -370,7 +370,7 @@ const SP = { s: null, w: null, ctx: null, q: 0, qT: 0 };
 const POSTER = { sky: .5, desert: .86, bridge: .55, forest: .8, sea: .72, bazaar: .4, code: .62 };
 function songFocal(W, H) {
   if (W >= 900 && W / H > 1.1) return { x: W * .05, y: H * .1, w: W * .9, h: H * .64 };
-  return { x: 14, y: H * .1, w: W - 28, h: H * .52 };
+  return { x: 14, y: H * .1, w: W - 28, h: H * .47 };
 }
 function buildSongWorld() {
   if (!SP.s) return;
@@ -418,7 +418,7 @@ function renderSong(id) {
   $('#sStoryP').innerHTML = (LANG === 'fa' ? s.storyFa : s.storyEn).map((p) => `<p>${esc(p)}</p>`).join('');
   $('#sMap').innerHTML = s.mapT.map((tt, i) => `<li><i></i><b>${fmt(tt)}</b><span>${esc(L(s.mapFa[i], s.mapEn[i]))}</span></li>`).join('');
   const xs = XS[s.id] || 0;
-  $('#sMapNote').textContent = L(`این‌جا ${num(Math.round(pl))} ثانیه از آهنگ پخش می‌شود، از ${fmt(xs)} تا ${fmt(xs + pl)}. وقتی پخش می‌شود، لحظه‌اش روشن می‌شود.`, `This page plays ${Math.round(pl)} seconds, from ${fmt(xs)} to ${fmt(xs + pl)}. The moment you are in lights up.`);
+  $('#sMapNote').textContent = L(`این‌جا ${num(Math.round(pl))} ثانیه از آهنگ پخش می‌شود، از ${fmt(xs)} تا ${fmt(Math.round(xs + pl))}. وقتی پخش می‌شود، لحظه‌اش روشن می‌شود.`, `This page plays ${Math.round(pl)} seconds, from ${fmt(xs)} to ${fmt(Math.round(xs + pl))}. The moment you are in lights up.`);
   $('#sJobs').innerHTML = (LANG === 'fa' ? s.jobsFa : s.jobsEn).map(([a, b]) => `<div><b>${esc(a)}</b><span>${esc(b)}</span></div>`).join('');
   const bpm = LANG === 'fa' ? `${faD(s.bpm)} ضرب در دقیقه` : `${s.bpm} BPM`;
   $('#sCred').innerHTML = [
